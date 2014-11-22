@@ -49,6 +49,30 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
+
+
+    /**
+     * Custom error handlers
+     *
+     * Careful here, any codes which are not specified
+     * will be treated as 500
+     * 404 not found will be taken care by @link App::missing below
+     */
+
+    $codes = array(401, 403);
+    if (!Config::get('app.debug'))
+    {
+        $codes[] = 500;
+    }
+ 
+    if (in_array($code, $codes))
+    {
+        $view = "errors/$code";
+ 
+        $data = array('code' => $code);
+ 
+        return Response::view($view, $data, $code);
+    }
 });
 
 /*
@@ -79,3 +103,53 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+/*
+|--------------------------------------------------------------------------
+| Custom
+|--------------------------------------------------------------------------
+|
+| Add our custom configs, functions, etc.
+|
+*/
+
+/**
+ * Set Config Domain
+ */ 
+
+$parse = parse_url(Config::get('app.url'));
+Config::set('app.domain', $parse['host']);
+
+/**
+ * 404 Error Handler
+ */ 
+
+App::missing(function($exception)
+{
+    return View::make('errors/404');
+});
+
+/**
+ * Blade extended
+ */ 
+
+// Twig Spaceless equivalent
+Blade::extend(function($view, $compiler){
+    $pattern = $compiler->createPlainMatcher('spaceless');
+    return preg_replace($pattern, '$1<?php ob_start(); ?>$2', $view);
+});
+
+Blade::extend(function($view, $compiler){
+    $pattern = $compiler->createPlainMatcher('endspaceless');
+    return preg_replace($pattern, '$1<?php echo trim(preg_replace(\'/>\s+</\', \'><\', ob_get_clean())); ?>$2', $view);
+});
+
+// Twig Set equivalent: @set('variable', 'value')
+Blade::extend(function($view, $compiler){
+    return preg_replace("/@set\('(.*?)'\,(.*)\)/", '<?php $$1 = $2; ?>', $view); 
+});
+
+// Normal PHP code: {{% insert php code here %}}
+Blade::extend(function($view, $compiler){
+    return preg_replace("/\{\{\%(.*?)\%\}\}/", '<?php $1 ?>', $view); 
+});
