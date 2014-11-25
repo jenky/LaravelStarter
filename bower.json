@@ -4,6 +4,7 @@
   "dependencies": {
     "jquery": "latest",
     "bootstrap": "latest",    
-    "font-awesome": "latest"
+    "font-awesome": "latest",
+    "bootbox": "makeusabrew/bootbox"
   }
 }
