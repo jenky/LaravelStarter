@@ -25,6 +25,7 @@ $(function() {
         $('#ajaxModalContent').load($remote);
     });
 
+    // ajax delete
     $(document).on('click', '.ajaxRemove', function(e) {
         e.preventDefault();
 
@@ -58,24 +59,4 @@ $(function() {
             }); 
         }
     });
-
-    if ($.fn.scrollToFixed)
-    {
-        $('#sidebar').scrollToFixed({
-            minWidth: 768
-        });
-
-        $('.sticky').scrollToFixed({
-            preFixed: function() { 
-                if ($(this).hasClass('sticky-h1')) {
-                    $(this).find('h1').addClass('text-primary'); 
-                }
-            },
-            postFixed: function() { 
-                if ($(this).hasClass('sticky-h1')) {
-                    $(this).find('h1').removeClass('text-primary'); 
-                }
-            }
-        });
-    }
 });
