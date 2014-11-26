@@ -23,7 +23,10 @@
         ],
         "files": [
             "app/helpers.php"
-        ]
+        ],
+        "psr-0": {
+            "Libs": "app" 
+        }
     },
     "scripts": {
         "post-install-cmd": [
