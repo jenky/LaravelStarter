@@ -67,7 +67,7 @@ App::error(function(Exception $exception, $code)
  
     if (in_array($code, $codes))
     {
-        $view = "errors/$code";
+        $view = "errors.$code";
  
         $data = array('code' => $code);
  
@@ -126,7 +126,7 @@ Config::set('app.domain', $parse['host']);
 
 App::missing(function($exception)
 {
-    return View::make('errors/404');
+    return View::make('errors.404');
 });
 
 /**
@@ -150,6 +150,6 @@ Blade::extend(function($view, $compiler){
 });
 
 // Normal PHP code: {{% insert php code here %}}
-Blade::extend(function($view, $compiler){
+/*Blade::extend(function($view, $compiler){
     return preg_replace("/\{\{\%(.*?)\%\}\}/", '<?php $1 ?>', $view); 
-});
+});*/
