@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="@yield('htmlLang', 'en)" class="@yield('htmlClass')">
+<html lang="@yield('htmlLang', 'en')" class="@yield('htmlClass')">
 
 <head>
     @section('head')
