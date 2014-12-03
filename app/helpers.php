@@ -44,7 +44,7 @@ if (!function_exists('parse_datetime'))
             $timezone = Auth::user()->timezone;
         }
 
-        if (!in_array($timezone, timezone_identifiers_list())
+        if (!in_array($timezone, timezone_identifiers_list()))
         {
             $timezone = false;
         }
