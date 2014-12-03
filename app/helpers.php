@@ -24,3 +24,36 @@ if (!function_exists('array_rewrite'))
         return $output;
     }
 }
+
+/**
+ * Parse datetime with Carbon
+ * 
+ * @param mixed|$time Carbon supported time
+ * @param string|$timezone Output timezone, try to catch from users table if not set
+ * 
+ * @return Carbon
+ */ 
+if (!function_exists('parse_datetime')) 
+{
+    function parse_datetime($time, $timezone = null)
+    {
+        $defaultTz = Config::get('app.timezone');
+
+        if (!$timezone && !empty(Auth::user()->timezone))
+        {
+            $timezone = Auth::user()->timezone;
+        }
+
+        if (!in_array($timezone, timezone_identifiers_list())
+        {
+            $timezone = false;
+        }
+
+        if ($timezone)
+        {
+            return Carbon::parse($time, $defaultTz)->setTimezone($timezone);
+        }
+
+        return Carbon::parse($time, $defaultTz); 
+    }
+}
