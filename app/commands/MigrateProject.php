@@ -57,7 +57,7 @@ class MigrateProject extends Command
                 {
                     if (in_array($key, array('argument', 'option')))
                     {
-                        $key = '';
+                        $key = '';                       
                     }            
 
                     $text = $commandName;
@@ -66,7 +66,7 @@ class MigrateProject extends Command
                 }
 
                 $this->info("Calling: {$text}");
-                $this->call($commandName, $commands);
+                $this->call($commandName, $command);
             }        
         }
     }
