@@ -47,6 +47,7 @@ class MigrateProject extends Command
 
     protected function runAllCommands()
     {
+        // TODO: create log file and detect if command already used
         $_commands = Config::get('project');
 
         foreach ($_commands as $commandName => $commands) 
