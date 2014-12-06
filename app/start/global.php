@@ -75,6 +75,25 @@ App::error(function(Exception $exception, $code)
     }
 });
 
+/**
+ * 404 Error Handler
+ */ 
+
+App::missing(function($exception)
+{
+    return View::make('errors.404');
+});
+
+/**
+ * Eloquent error handler, listen for the ModelNotFoundException
+ */ 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+App::error(function(ModelNotFoundException $e)
+{
+    return View::make('errors.404');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler
@@ -119,15 +138,6 @@ require app_path().'/filters.php';
 
 $parse = parse_url(Config::get('app.url'));
 Config::set('app.domain', $parse['host']);
-
-/**
- * 404 Error Handler
- */ 
-
-App::missing(function($exception)
-{
-    return View::make('errors.404');
-});
 
 /**
  * Blade extended

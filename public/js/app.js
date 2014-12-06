@@ -50,7 +50,7 @@ $(function() {
                                 return;
                             }
 
-                            if (!res.error) {
+                            if (res.success) {
                                 $(remove).empty().remove();
                             }
                         }
