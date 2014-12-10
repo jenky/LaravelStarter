@@ -15,20 +15,20 @@ var prefixer = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
 
 // HTML
-var minifyhtml = require('gulp-minify-html');
+// var minifyhtml = require('gulp-minify-html');
 
 // IMAGE
-var imagemin = require('gulp-imagemin');
+// var imagemin = require('gulp-imagemin');
 
 // UTIL
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
-var cache = require('gulp-cache');
+// var cache = require('gulp-cache');
 // var clean = require('gulp-clean');
 var rev = require('gulp-rev');
 
 // DEV
-var notify = require('gulp-notify');
+// var notify = require('gulp-notify');
 
 //////////////////////////////////////////////////
 // PATHS
