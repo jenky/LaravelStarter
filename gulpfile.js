@@ -24,7 +24,7 @@ var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var cache = require('gulp-cache');
-var clean = require('gulp-clean');
+// var clean = require('gulp-clean');
 var rev = require('gulp-rev');
 
 // DEV
@@ -63,20 +63,25 @@ var paths = {
 gulp.task('js:vendor', function() {
   return gulp.src([
     // Specific order required by Bootstrap
-    paths.bower.bootstrap + '/js/transition.js',
-    paths.bower.bootstrap + '/js/alert.js',
-    paths.bower.bootstrap + '/js/button.js',
-    paths.bower.bootstrap + '/js/carousel.js',
-    paths.bower.bootstrap + '/js/collapse.js',
-    paths.bower.bootstrap + '/js/dropdown.js',
-    paths.bower.bootstrap + '/js/modal.js',
-    paths.bower.bootstrap + '/js/tooltip.js',
-    paths.bower.bootstrap + '/js/popover.js',
-    paths.bower.bootstrap + '/js/scrollspy.js',
-    paths.bower.bootstrap + '/js/tab.js',
-    paths.bower.bootstrap + '/js/affix.js',
-    paths.bower.jqueryCookie + '/jquery.cookie.js',
-    paths.app.assets + '/js/vendor.js'
+    // paths.bower.bootstrap + '/js/transition.js',
+    // paths.bower.bootstrap + '/js/alert.js',
+    // paths.bower.bootstrap + '/js/button.js',
+    // paths.bower.bootstrap + '/js/carousel.js',
+    // paths.bower.bootstrap + '/js/collapse.js',
+    // paths.bower.bootstrap + '/js/dropdown.js',
+    // paths.bower.bootstrap + '/js/modal.js',
+    // paths.bower.bootstrap + '/js/tooltip.js',
+    // paths.bower.bootstrap + '/js/popover.js',
+    // paths.bower.bootstrap + '/js/scrollspy.js',
+    // paths.bower.bootstrap + '/js/tab.js',
+    // paths.bower.bootstrap + '/js/affix.js',
+    // paths.bower.jqueryCookie + '/jquery.cookie.js',
+    // paths.app.assets + '/js/vendor.js'
+
+    paths.bower.jquery + '/dist/jquery.min.js',
+    paths.bower.bootstrap + '/dist/js/bootstrap.min.js',
+
+    paths.app.assets + '/js/vendor/*.js'
   ])
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest(paths.app.build + '/js'))
@@ -120,19 +125,14 @@ gulp.task('js:pub', ['js:vendor', 'js:app'], function() {
 
 gulp.task('less:build', function () {
   return gulp.src([paths.app.assets + '/less/*.less', paths.app.assets + '/less/**/*.less'])
-    .pipe(less({
-      paths: [
-        paths.bower.bootstrap + '/less',
-        paths.bower.fontAwesome + '/less',
-        paths.app.assets + '/less'
-      ]}))
+    .pipe(less())
     .pipe(gulp.dest(paths.app.build + '/css'));
 });
 
 gulp.task('sass:build', function () {
-    return gulp.src([paths.app.assets + '/sass/*.scss', paths.app.assets + '/sass/**/*.scss'])
-        .pipe(sass())
-        .pipe(gulp.dest(paths.app.build + '/css'));
+  return gulp.src([paths.app.assets + '/sass/*.scss', paths.app.assets + '/sass/**/*.scss'])
+    .pipe(sass())
+    .pipe(gulp.dest(paths.app.build + '/css'));
 });
 
 gulp.task('css:pub', ['less:build', 'sass:build'], function() {
@@ -168,6 +168,10 @@ gulp.task('sass:watch', function () {
   gulp.watch(paths.app.assets + '/sass/**/*.scss', ['css:pub']);
 });
 
+gulp.task('css:watch', function () {
+  gulp.watch(paths.app.build + '/*.css', ['css:pub']);
+});
+
 //////////////////////////////////////////////////
 // CLEAN Tasks
 //////////////////////////////////////////////////
@@ -196,4 +200,4 @@ gulp.task('build:dev', []);
 gulp.task('build:prod', []);
 
 // gulp clean:pre && gulp TASK && gulp clean:post
-gulp.task('default', ['js:pub', 'js:lib', 'css:pub', 'fonts:pub', 'js:watch', 'less:watch', 'sass:watch']);
+gulp.task('default', ['js:pub', /*'js:lib',*/ 'css:pub', 'fonts:pub', 'js:watch', 'less:watch', 'sass:watch', 'css:watch']);
