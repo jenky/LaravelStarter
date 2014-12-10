@@ -124,6 +124,9 @@ return array(
 
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
+
+        // Optional
+        // 'Themonkeys\Cachebuster\CachebusterServiceProvider',
 	),
 
 	/*
@@ -193,7 +196,8 @@ return array(
 
         'Carbon'            => 'Carbon\Carbon',
 
-        
+        // Optional
+        // 'Asset'             => 'Themonkeys\Cachebuster\Cachebuster',
 	),
 
 );

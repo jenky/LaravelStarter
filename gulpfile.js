@@ -10,6 +10,7 @@ var uglify = require('gulp-uglify');
 
 // CSS
 var less = require('gulp-less');
+var sass = require('gulp-sass');
 var prefixer = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
 
@@ -24,6 +25,7 @@ var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var cache = require('gulp-cache');
 var clean = require('gulp-clean');
+var rev = require('gulp-rev');
 
 // DEV
 var notify = require('gulp-notify');
@@ -105,9 +107,10 @@ gulp.task('js:lib', function () {
 gulp.task('js:pub', ['js:vendor', 'js:app'], function() {
   return gulp.src(paths.app.build + '/js/**/*.js')
     .pipe(uglify())
-    .pipe(rename(function (path) {
-      path.basename += ".min";
-    }))
+    // .pipe(rename(function (path) {
+    //   path.basename += ".min";
+    // }))
+    // .pipe(rev())
     .pipe(gulp.dest(paths.public.assets + '/js'));
 });
 
@@ -116,7 +119,7 @@ gulp.task('js:pub', ['js:vendor', 'js:app'], function() {
 //////////////////////////////////////////////////
 
 gulp.task('less:build', function () {
-  return gulp.src(paths.app.assets + '/less/{vendor,app}.less')
+  return gulp.src([paths.app.assets + '/less/*.less', paths.app.assets + '/less/**/*.less'])
     .pipe(less({
       paths: [
         paths.bower.bootstrap + '/less',
@@ -126,13 +129,21 @@ gulp.task('less:build', function () {
     .pipe(gulp.dest(paths.app.build + '/css'));
 });
 
-gulp.task('css:pub', ['less:build'], function() {
-  return gulp.src(paths.app.build + '/css/**/*.css')
+gulp.task('sass:build', function () {
+    return gulp.src([paths.app.assets + '/sass/*.scss', paths.app.assets + '/sass/**/*.scss'])
+        .pipe(sass())
+        .pipe(gulp.dest(paths.app.build + '/css'));
+});
+
+gulp.task('css:pub', ['less:build', 'sass:build'], function() {
+  return gulp.src(paths.app.build + '/css/*.css')
     .pipe(prefixer())
     .pipe(minifycss())
-    .pipe(rename(function (path) {
-      path.basename += ".min";
-    }))
+    // .pipe(rename(function (path) {
+    //   path.basename += ".min";
+    // }))
+    .pipe(concat('app.css'))
+    // .pipe(rev())
     .pipe(gulp.dest(paths.public.assets + '/css'));
 });
 
@@ -151,6 +162,10 @@ gulp.task('js:watch', function () {
 
 gulp.task('less:watch', function () {
   gulp.watch(paths.app.assets + '/less/**/*.less', ['css:pub']);
+});
+
+gulp.task('sass:watch', function () {
+  gulp.watch(paths.app.assets + '/sass/**/*.scss', ['css:pub']);
 });
 
 //////////////////////////////////////////////////
@@ -181,4 +196,4 @@ gulp.task('build:dev', []);
 gulp.task('build:prod', []);
 
 // gulp clean:pre && gulp TASK && gulp clean:post
-gulp.task('default', ['js:pub', 'js:lib', 'css:pub', 'fonts:pub', 'js:watch', 'less:watch']);
+gulp.task('default', ['js:pub', 'js:lib', 'css:pub', 'fonts:pub', 'js:watch', 'less:watch', 'sass:watch']);

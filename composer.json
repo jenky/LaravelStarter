@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "laravel/framework": "4.2.*",
-        "doctrine/dbal": "~2.3"
+        "doctrine/dbal": "~2.3",
+        "themonkeys/cachebuster": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "dev-master",
