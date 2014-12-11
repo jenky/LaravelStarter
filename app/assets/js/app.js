@@ -32,8 +32,8 @@ $(function() {
         var $this = $(this),
             url = $this.attr('href') || false,
             method = $this.data('method') || 'POST',
-            message = $this.data('message') || 'Are you sure?'
-            params = $this.data('params') || {}
+            message = $this.data('message') || 'Are you sure?',
+            params = $this.data('params') || {},
             remove = $this.data('remove') || false;
 
         if (url) {
