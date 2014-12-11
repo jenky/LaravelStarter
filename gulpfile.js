@@ -61,7 +61,7 @@ var paths = {
 //////////////////////////////////////////////////
 
 gulp.task('js:vendor', function() {
-  return gulp.src([
+  gulp.src([
     // Specific order required by Bootstrap
     // paths.bower.bootstrap + '/js/transition.js',
     // paths.bower.bootstrap + '/js/alert.js',
@@ -90,7 +90,7 @@ gulp.task('js:vendor', function() {
 });
 
 gulp.task('js:app', function() {
-  return gulp.src([
+  gulp.src([
     // Supporting specific order
     paths.app.assets + '/js/app.js'
   ])
@@ -101,7 +101,7 @@ gulp.task('js:app', function() {
 });
 
 gulp.task('js:lib', function () {
-  return gulp.src([
+  gulp.src([
     paths.bower.jquery + '/dist/*.min.*',
     paths.bower.html5shiv + '/dist/html5shiv.min.js',
     paths.bower.respond + '/dest/respond.min.js',
@@ -110,7 +110,7 @@ gulp.task('js:lib', function () {
 });
 
 gulp.task('js:pub', ['js:vendor', 'js:app'], function() {
-  return gulp.src(paths.app.build + '/js/**/*.js')
+  gulp.src(paths.app.build + '/js/**/*.js')
     .pipe(uglify())
     // .pipe(rename(function (path) {
     //   path.basename += ".min";
@@ -124,19 +124,25 @@ gulp.task('js:pub', ['js:vendor', 'js:app'], function() {
 //////////////////////////////////////////////////
 
 gulp.task('less:build', function () {
-  return gulp.src([paths.app.assets + '/less/*.less', paths.app.assets + '/less/**/*.less'])
+  gulp.src([
+    paths.app.assets + '/less/*.less', 
+    paths.app.assets + '/less/**/*.less'
+  ])
     .pipe(less())
     .pipe(gulp.dest(paths.app.build + '/css'));
 });
 
 gulp.task('sass:build', function () {
-  return gulp.src([paths.app.assets + '/sass/*.scss', paths.app.assets + '/sass/**/*.scss'])
+  gulp.src([
+    paths.app.assets + '/sass/*.scss', 
+    paths.app.assets + '/sass/**/*.scss'
+  ])
     .pipe(sass())
     .pipe(gulp.dest(paths.app.build + '/css'));
 });
 
 gulp.task('css:pub', ['less:build', 'sass:build'], function() {
-  return gulp.src(paths.app.build + '/css/*.css')
+  gulp.src(paths.app.build + '/css/*.css')
     .pipe(prefixer())
     .pipe(minifycss())
     // .pipe(rename(function (path) {
@@ -148,7 +154,10 @@ gulp.task('css:pub', ['less:build', 'sass:build'], function() {
 });
 
 gulp.task('fonts:pub', function () {
-  return gulp.src(paths.bower.fontAwesome + '/fonts/*-webfont.*')
+  gulp.src([
+    paths.bower.bootstrap + '/fonts/*.*',
+    paths.bower.fontAwesome + '/fonts/*-webfont.*'
+  ])
     .pipe(gulp.dest(paths.public.assets + '/fonts'));
 });
 
@@ -177,7 +186,7 @@ gulp.task('css:watch', function () {
 //////////////////////////////////////////////////
 
 gulp.task('clean:pre', function () {
-  return gulp.src([
+  gulp.src([
     paths.app.build + '/**/*',
     '!' + paths.app.build + '/.gitignore',
     paths.public.assets + '/{js,css,fonts}/**/*'
@@ -186,7 +195,7 @@ gulp.task('clean:pre', function () {
 });
 
 gulp.task('clean:post', function () {
-  return gulp.src([
+  gulp.src([
     paths.app.build + '/**/*',
   ])
     .pipe(clean());
