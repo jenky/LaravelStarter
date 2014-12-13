@@ -209,4 +209,4 @@ gulp.task('build:dev', []);
 gulp.task('build:prod', []);
 
 // gulp clean:pre && gulp TASK && gulp clean:post
-gulp.task('default', ['js:pub', /*'js:lib',*/ 'css:pub', 'fonts:pub', 'js:watch', 'less:watch', 'sass:watch', 'css:watch']);
+gulp.task('default', ['js:pub', /*'js:lib',*/ 'css:pub', 'fonts:pub', 'js:watch', 'less:watch', 'sass:watch']);
