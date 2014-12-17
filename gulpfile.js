@@ -26,6 +26,7 @@ var rename = require('gulp-rename');
 // var cache = require('gulp-cache');
 // var clean = require('gulp-clean');
 var rev = require('gulp-rev');
+var plumber = require('gulp-plumber');
 
 // DEV
 // var notify = require('gulp-notify');
@@ -77,16 +78,22 @@ gulp.task('js:vendor', function() {
     // paths.bower.bootstrap + '/js/affix.js',
     // paths.bower.jqueryCookie + '/jquery.cookie.js',
     // paths.app.assets + '/js/vendor.js'
-
+    
     paths.bower.jquery + '/dist/jquery.min.js',
     paths.bower.bootstrap + '/dist/js/bootstrap.min.js',
 
     paths.app.assets + '/js/vendor/*.js'
   ])
+    .pipe(plumber({
+        handleError: function (err) {
+            console.log(err);
+            this.emit('end');
+        }
+    }))
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest(paths.app.build + '/js'))
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
+    // .pipe(jshint())
+    // .pipe(jshint.reporter('default'));
 });
 
 gulp.task('js:app', function() {
@@ -94,10 +101,16 @@ gulp.task('js:app', function() {
     // Supporting specific order
     paths.app.assets + '/js/app.js'
   ])
+    .pipe(plumber({
+        handleError: function (err) {
+            console.log(err);
+            this.emit('end');
+        }
+    }))
     .pipe(concat('app.js'))
     .pipe(gulp.dest(paths.app.build + '/js'))
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
+    // .pipe(jshint())
+    // .pipe(jshint.reporter('default'));
 });
 
 gulp.task('js:lib', function () {
@@ -106,11 +119,23 @@ gulp.task('js:lib', function () {
     paths.bower.html5shiv + '/dist/html5shiv.min.js',
     paths.bower.respond + '/dest/respond.min.js',
   ])
+    .pipe(plumber({
+        handleError: function (err) {
+            console.log(err);
+            this.emit('end');
+        }
+    }))
     .pipe(gulp.dest(paths.public.assets + '/js'));
 });
 
 gulp.task('js:pub', ['js:vendor', 'js:app'], function() {
   gulp.src(paths.app.build + '/js/**/*.js')
+    .pipe(plumber({
+        handleError: function (err) {
+            console.log(err);
+            this.emit('end');
+        }
+    }))
     .pipe(uglify())
     // .pipe(rename(function (path) {
     //   path.basename += ".min";
@@ -141,8 +166,24 @@ gulp.task('sass:build', function () {
     .pipe(gulp.dest(paths.app.build + '/css'));
 });
 
+gulp.task('css:vendor', function() {
+  gulp.src([   
+    // Supporting specific order 
+    paths.bower.bootstrap + '/dist/css/bootstrap.min.css',
+    paths.bower.fontAwesome + '/css/font-awesome.min.css',
+
+    paths.app.assets + '/css/*.css'
+  ])
+    .pipe(prefixer())
+    .pipe(minifycss())
+    .pipe(concat('vendor.css'))
+    .pipe(gulp.dest(paths.public.assets + '/css'));
+});
+
 gulp.task('css:pub', ['less:build', 'sass:build'], function() {
-  gulp.src(paths.app.build + '/css/*.css')
+  gulp.src([
+    paths.app.build + '/css/*.css'
+  ])
     .pipe(prefixer())
     .pipe(minifycss())
     // .pipe(rename(function (path) {
@@ -178,7 +219,7 @@ gulp.task('sass:watch', function () {
 });
 
 gulp.task('css:watch', function () {
-  gulp.watch(paths.app.build + '/*.css', ['css:pub']);
+  gulp.watch(paths.app.assets + '/css/*.css', ['css:vendor']);
 });
 
 //////////////////////////////////////////////////
@@ -209,4 +250,4 @@ gulp.task('build:dev', []);
 gulp.task('build:prod', []);
 
 // gulp clean:pre && gulp TASK && gulp clean:post
-gulp.task('default', ['js:pub', /*'js:lib',*/ 'css:pub', 'fonts:pub', 'js:watch', 'less:watch', 'sass:watch']);
+gulp.task('default', ['js:pub', /*'js:lib',*/ 'css:vendor', 'css:pub', 'fonts:pub', 'js:watch', 'less:watch', 'sass:watch', 'css:watch']);
