@@ -256,7 +256,7 @@ class Locale
         'ZW' => 'Zimbabwe'
     );
 
-    public static function getContry($code)
+    public static function getCountry($code)
     {
         $code = strtoupper($code);
 
@@ -265,7 +265,7 @@ class Locale
         return isset($countries[$code]) ? $countries[$code] : false;
     }
 
-    public static function getContries()
+    public static function getCountries()
     {
         return static::$countries;
     }
