@@ -122,11 +122,13 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
+        // Optional
+        // 'Themonkeys\Cachebuster\CachebusterServiceProvider',
+        
+        // Dev
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
 
-        // Optional
-        // 'Themonkeys\Cachebuster\CachebusterServiceProvider',
 	),
 
 	/*
