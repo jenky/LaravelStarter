@@ -20,6 +20,7 @@ $(function() {
             options = $this.data('options') || {},
             $modal = $('<div class="modal fade" id="ajaxModal" tabindex="-1" role="dialog" aria-labelledby="ajaxModalLabel" aria-hidden="true"><div id="ajaxModalContent"></div></div>');
 
+        $this.blur();
         $('body').append($modal);
         $modal.modal(options);
         $('#ajaxModalContent').load($remote);
