@@ -124,11 +124,6 @@ return array(
 
         // Optional
         // 'Themonkeys\Cachebuster\CachebusterServiceProvider',
-        
-        // Dev
-        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-        'Way\Generators\GeneratorsServiceProvider',
-
 	),
 
 	/*
