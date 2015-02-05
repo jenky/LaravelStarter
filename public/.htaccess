@@ -5,13 +5,6 @@
 
     RewriteEngine On
 
-    #RewriteRule ^(js|css|fonts|image)($|/) - [L]
-    
-    # ------------------------------------------------------------------------------
-    # | Remove cachebuster hash from request URLs if present                       |
-    # ------------------------------------------------------------------------------
-    #RewriteRule ^(.*)-[0-9a-f]{32}(\.(.*))$ $1$2 [DPI]
-
     # Redirect Trailing Slashes...
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 
@@ -19,11 +12,4 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
-
-    # ------------------------------------------------------------------------------
-    # | Allow Laravel to pre-process the css to add cachebusters to image urls     |
-    # ------------------------------------------------------------------------------
-    #RewriteCond %{REQUEST_URI} !^/index.php
-    #RewriteRule ^(.*\.css)$ index.php [L]
-    
 </IfModule>

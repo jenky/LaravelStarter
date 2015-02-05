@@ -3,9 +3,10 @@
 //////////////////////////////////////////////////
 
 var gulp = require('gulp');
+var elixir = require('laravel-elixir');
 
 // JS
-var jshint = require('gulp-jshint');
+// var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
 
 // CSS
@@ -32,14 +33,24 @@ var plumber = require('gulp-plumber');
 // var notify = require('gulp-notify');
 
 //////////////////////////////////////////////////
+// FUNCTIONS
+//////////////////////////////////////////////////
+function swallowError (error) {
+    //If you want details of the error in the console
+    console.log(error.toString());
+
+    this.emit('end');
+}
+
+//////////////////////////////////////////////////
 // PATHS
 //////////////////////////////////////////////////
 
 var paths = {
   app: {
     root: 'app',
-    assets: 'app/assets',
-    build: 'app/build',
+    assets: 'resources/assets',
+    build: 'resources/build',
   },
 
   public: {
@@ -81,8 +92,10 @@ gulp.task('js:vendor', function() {
     
     paths.bower.jquery + '/dist/jquery.min.js',
     paths.bower.bootstrap + '/dist/js/bootstrap.min.js',
+    // paths.bower + '/bootbox/bootbox.js',
+    // paths.app.assets + '/js/moment-with-locales.min.js',
 
-    paths.app.assets + '/js/vendor/*.js'
+    paths.app.assets + '/vendor/js/**/*.js'
   ])
     .pipe(plumber({
         handleError: function (err) {
@@ -91,15 +104,13 @@ gulp.task('js:vendor', function() {
         }
     }))
     .pipe(concat('vendor.js'))
-    .pipe(gulp.dest(paths.app.build + '/js'))
-    // .pipe(jshint())
-    // .pipe(jshint.reporter('default'));
+    .pipe(gulp.dest(paths.app.build + '/js'));
 });
 
 gulp.task('js:app', function() {
   gulp.src([
     // Supporting specific order
-    paths.app.assets + '/js/app.js'
+    paths.app.assets + '/js/**/*.js'
   ])
     .pipe(plumber({
         handleError: function (err) {
@@ -108,25 +119,9 @@ gulp.task('js:app', function() {
         }
     }))
     .pipe(concat('app.js'))
-    .pipe(gulp.dest(paths.app.build + '/js'))
-    // .pipe(jshint())
-    // .pipe(jshint.reporter('default'));
+    .pipe(gulp.dest(paths.app.build + '/js'));
 });
 
-gulp.task('js:lib', function () {
-  gulp.src([
-    paths.bower.jquery + '/dist/*.min.*',
-    paths.bower.html5shiv + '/dist/html5shiv.min.js',
-    paths.bower.respond + '/dest/respond.min.js',
-  ])
-    .pipe(plumber({
-        handleError: function (err) {
-            console.log(err);
-            this.emit('end');
-        }
-    }))
-    .pipe(gulp.dest(paths.public.assets + '/js'));
-});
 
 gulp.task('js:pub', ['js:vendor', 'js:app'], function() {
   gulp.src(paths.app.build + '/js/**/*.js')
@@ -137,11 +132,7 @@ gulp.task('js:pub', ['js:vendor', 'js:app'], function() {
         }
     }))
     .pipe(uglify())
-    // .pipe(rename(function (path) {
-    //   path.basename += ".min";
-    // }))
-    // .pipe(rev())
-    .pipe(gulp.dest(paths.public.assets + '/js'));
+    .pipe(gulp.dest(paths.public.root + '/js'));
 });
 
 //////////////////////////////////////////////////
@@ -167,31 +158,27 @@ gulp.task('sass:build', function () {
 });
 
 gulp.task('css:vendor', function() {
-  gulp.src([   
-    // Supporting specific order 
+  gulp.src([    
     paths.bower.bootstrap + '/dist/css/bootstrap.min.css',
     paths.bower.fontAwesome + '/css/font-awesome.min.css',
 
-    paths.app.assets + '/css/*.css'
+    paths.app.assets + '/vendor/css/**/*.css'
   ])
+    .pipe(concat('vendor.css'))
     .pipe(prefixer())
     .pipe(minifycss())
-    .pipe(concat('vendor.css'))
-    .pipe(gulp.dest(paths.public.assets + '/css'));
+    .pipe(gulp.dest(paths.public.root + '/css'));
 });
 
-gulp.task('css:pub', ['less:build', 'sass:build'], function() {
+gulp.task('css:pub', ['less:build', 'sass:build', 'css:vendor'], function() {
   gulp.src([
-    paths.app.build + '/css/*.css'
+    paths.app.assets + '/css/**/*.css',
+    paths.app.build + '/css/**/*.css'
   ])
     .pipe(prefixer())
     .pipe(minifycss())
-    // .pipe(rename(function (path) {
-    //   path.basename += ".min";
-    // }))
     .pipe(concat('app.css'))
-    // .pipe(rev())
-    .pipe(gulp.dest(paths.public.assets + '/css'));
+    .pipe(gulp.dest(paths.public.root + '/css'));
 });
 
 gulp.task('fonts:pub', function () {
@@ -199,7 +186,15 @@ gulp.task('fonts:pub', function () {
     paths.bower.bootstrap + '/fonts/*.*',
     paths.bower.fontAwesome + '/fonts/*-webfont.*'
   ])
-    .pipe(gulp.dest(paths.public.assets + '/fonts'));
+    .pipe(gulp.dest(paths.public.root + '/build/fonts'));
+});
+
+//
+
+gulp.task('version', function() {
+  elixir(function(mix) {
+    mix.version(['js/app.js', 'js/vendor.js', 'css/app.css', 'css/vendor.css']);
+  });
 });
 
 //////////////////////////////////////////////////
@@ -219,7 +214,7 @@ gulp.task('sass:watch', function () {
 });
 
 gulp.task('css:watch', function () {
-  gulp.watch(paths.app.assets + '/css/*.css', ['css:vendor']);
+  gulp.watch([paths.app.assets + '/css/*.css', paths.app.assets + '/vendor/**/*.css'], ['css:vendor', 'css:pub']);
 });
 
 //////////////////////////////////////////////////
@@ -250,4 +245,4 @@ gulp.task('build:dev', []);
 gulp.task('build:prod', []);
 
 // gulp clean:pre && gulp TASK && gulp clean:post
-gulp.task('default', ['js:pub', /*'js:lib',*/ 'css:vendor', 'css:pub', 'fonts:pub', 'js:watch', 'less:watch', 'sass:watch', 'css:watch']);
+gulp.task('default', ['js:pub', /*'js:lib',*/ 'css:vendor', 'css:pub', 'fonts:pub', 'js:watch', 'less:watch', 'sass:watch', 'version']);
