@@ -33,11 +33,11 @@ if (!function_exists('array_rewrite'))
  * 
  * @return Carbon
  */ 
-if (!function_exists('parse_datetime')) 
+if (!function_exists('datetime')) 
 {
-    function parse_datetime($time, $timezone = null)
+    function datetime($time, $timezone = null)
     {
-        $defaultTz = Config::get('app.timezone');
+        $defaultTz = config('app.timezone');
 
         if (!$timezone && !empty(Auth::user()->timezone))
         {
@@ -79,5 +79,21 @@ if (!function_exists('get_fullname'))
         $fullname = $firstname . ' ' . $lastname;
 
         return $fullname;
+    }
+}
+
+
+/**
+ * Create helper object in App\Helpers
+ * 
+ * @return object
+ */ 
+if (!function_exists('get_helper')) 
+{
+    function get_helper($helperClass, $namespace = '\\App\\Helpers\\') 
+    {
+        $class = $namespace . $helperClass;
+
+        return new $class;
     }
 }

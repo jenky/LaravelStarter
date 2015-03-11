@@ -19,12 +19,7 @@ class ConfigServiceProvider extends ServiceProvider {
 			//
 		]);
 
-        if ($this->app->environment('local')) 
-        {
-            config([
-                // 
-            ]);
-        }
+        get_helper('EnvLoader')->loadEnvConfigs();
 
         /* Set config domain */
         $parse = parse_url(config('app.url'));
