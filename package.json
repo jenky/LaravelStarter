@@ -12,7 +12,6 @@
     "gulp-rename": "^1.2.0",
     "gulp-rev": "^2.0.1",
     "gulp-sass": "^1.2.4",
-    "gulp-uglify": "^0.3.0",
-    "node-sass": "^1.0.3"
+    "gulp-uglify": "^0.3.0"
   }
 }
