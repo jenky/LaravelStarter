@@ -13,7 +13,8 @@
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
         "barryvdh/laravel-ide-helper": "dev-master",
-        "laracasts/generators": "dev-master"
+        "laracasts/generators": "dev-master",
+        "codeception/codeception": "~2.0"
 	},
 	"autoload": {
 		"classmap": [
