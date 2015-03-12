@@ -90,10 +90,25 @@ if (!function_exists('get_fullname'))
  */ 
 if (!function_exists('get_helper')) 
 {
+	class HelperCache {
+
+		protected static $helpers;
+
+		public static function getHelper($class)
+		{
+			if (!isset(static::$helpers[$class]))
+			{
+				static::$helpers[$class] = new $class;
+			}
+
+			return static::$helpers[$class];
+		}
+	}
+
     function get_helper($helperClass, $namespace = '\\App\\Helpers\\') 
     {
         $class = $namespace . $helperClass;
 
-        return new $class;
+        return HelperCache::getHelper($class);
     }
 }
