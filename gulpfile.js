@@ -191,7 +191,7 @@ gulp.task('fonts:pub', function () {
 
 //
 
-gulp.task('version', function() {
+gulp.task('version', ['js:pub', 'css:pub'], function() {
   elixir(function(mix) {
     mix.version(['js/app.js', 'js/vendor.js', 'css/app.css', 'css/vendor.css']);
   });
