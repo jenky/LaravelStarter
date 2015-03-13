@@ -4,4 +4,3 @@
 .env
 _ide_helper.php
 /storage/testing.sqlite
-/public/build
