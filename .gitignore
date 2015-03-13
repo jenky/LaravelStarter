@@ -2,3 +2,6 @@
 /node_modules
 /bower_components
 .env
+_ide_helper.php
+/storage/testing.sqlite
+/public/build
