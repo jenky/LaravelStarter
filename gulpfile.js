@@ -170,7 +170,7 @@ gulp.task('css:vendor', function() {
     .pipe(gulp.dest(paths.public.root + '/css'));
 });
 
-gulp.task('css:pub', ['less:build', 'sass:build', 'css:vendor'], function() {
+gulp.task('css:pub', ['less:build', 'sass:build'], function() {
   gulp.src([
     paths.app.assets + '/css/**/*.css',
     paths.app.build + '/css/**/*.css'
@@ -191,7 +191,7 @@ gulp.task('fonts:pub', function () {
 
 //
 
-gulp.task('version', ['js:pub', 'css:pub'], function() {
+gulp.task('version', ['js:pub', 'css:pub', 'css:vendor'], function() {
   elixir(function(mix) {
     mix.version(['js/app.js', 'js/vendor.js', 'css/app.css', 'css/vendor.css']);
   });
