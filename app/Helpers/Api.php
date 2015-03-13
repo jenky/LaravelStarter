@@ -98,6 +98,16 @@ class Api extends Http {
     }
 
     /**
+     * Determine if the error list is empty or not
+     * 
+     * @return bool
+     */ 
+    public function hasErrors()
+    {
+		return (!empty(static::$errors));
+    }
+
+    /**
 	 * Respone json errors payload
 	 * 
 	 * @param int $status
