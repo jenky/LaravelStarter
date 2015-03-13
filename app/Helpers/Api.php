@@ -14,7 +14,7 @@ class Api extends Http {
 	];
 
 	/**
-	 * List Erros
+	 * List Errors
 	 * 
 	 * @var array
 	 */ 
