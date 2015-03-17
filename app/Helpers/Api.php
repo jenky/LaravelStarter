@@ -119,7 +119,7 @@ class Api extends Http {
 		$errors = static::$errors;
 		static::$errors = [];
 
-		return \Response::json([
+		return response()->json([
 		    'errors' => $errors
 		], $status);
     }
