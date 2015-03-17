@@ -10,5 +10,6 @@ return [
 	'local' => [
 		'Laracasts\Generators\GeneratorsServiceProvider',
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider',
 	],
 ];

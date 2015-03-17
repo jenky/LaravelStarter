@@ -8,6 +8,6 @@
 
 return [
 	'local' => [
-		// 'My Alias' => 'Alias Class',
+		'Debugbar' => 'Barryvdh\Debugbar\Facade',
 	],
 ];

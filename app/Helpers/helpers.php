@@ -1,17 +1,18 @@
 <?php
 
-/**
- * Replace root array key with child array key
- * 
- * Note that the specified key must exist in the query result, or it will be ignored.
- *
- * @param array|$data
- * @param string|$key
- *
- * @return array
- */
 if (!function_exists('array_rewrite')) 
 {
+    /**
+     * Replace root array key with child array key
+     * 
+     * Note that the specified key must exist in the query result, or it will be ignored.
+     *
+     * @param array|$data
+     * @param string|$key
+     *
+     * @return array
+     */
+
     function array_rewrite(array $data, $key) 
     {
         $output = array();
@@ -25,16 +26,17 @@ if (!function_exists('array_rewrite'))
     }
 }
 
-/**
- * Parse datetime with Carbon
- * 
- * @param mixed|$time Carbon supported time
- * @param string|$timezone Output timezone, try to catch from users table if not set
- * 
- * @return Carbon
- */ 
 if (!function_exists('datetime')) 
 {
+    /**
+     * Parse datetime with Carbon
+     * 
+     * @param mixed|$time Carbon supported time
+     * @param string|$timezone Output timezone, try to catch from users table if not set
+     * 
+     * @return Carbon
+     */ 
+
     function datetime($time, $timezone = null)
     {
         $defaultTz = config('app.timezone');
@@ -82,14 +84,14 @@ if (!function_exists('get_fullname'))
     }
 }
 
-
-/**
- * Create helper object in App\Helpers
- * 
- * @return object
- */ 
 if (!function_exists('get_helper')) 
 {
+    /**
+     * Create helper object in App\Helpers
+     * 
+     * @return object
+     */ 
+
 	class HelperCache {
 
 		protected static $helpers;
@@ -110,5 +112,38 @@ if (!function_exists('get_helper'))
         $class = $namespace . $helperClass;
 
         return HelperCache::getHelper($class);
+    }
+}
+
+if (!function_exists('prd'))
+{
+    /**
+     * Print the passed variables and end the script.
+     *
+     * @param  mixed
+     * @return void
+     */
+    function prd()
+    {
+        array_map(function($x) { 
+            echo '<pre>';
+            print_r($x); 
+            echo '</pre>';
+        }, func_get_args());
+        die;
+    }
+}
+
+if (!function_exists('vd')) 
+{
+    /**
+     * Dump the passed variables using var_dump and end the script.
+     *
+     * @param  mixed
+     * @return void
+     */
+    function vd()
+    {
+        array_map(function($x) { var_dump($x);die; }, func_get_args());
     }
 }
