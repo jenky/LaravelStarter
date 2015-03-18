@@ -10,7 +10,7 @@ class Api extends Http {
 	 * @var array
 	 */ 
 	public static $customStatusTexts = [
-		// 1000 => 'Missing required field'
+		1000 => 'Validation fails'
 	];
 
 	/**
@@ -30,11 +30,11 @@ class Api extends Http {
 	 * @return \Response
 	 */ 
 	public function responseError($code = null, $message = '', $status = 400)
-    {
-        return $this->error($code, $message)->response($status);
-    }
+	{
+		return $this->error($code, $message)->response($status);
+	}
 
-    /**
+	/**
 	 * Respone json errors payload
 	 * 
 	 * @param array $errors
@@ -43,12 +43,12 @@ class Api extends Http {
 	 * 
 	 * @return \Response
 	 */ 
-    public function responseErrors(array $errors, $status = 400)
-    {
-    	return $this->errors($errors)->response($status);
-    }
+	public function responseErrors(array $errors, $status = 400)
+	{
+		return $this->errors($errors)->response($status);
+	}
 
-    /**
+	/**
 	 * Get error message based on http error codes and custom error codes
 	 * 
 	 * @param int $code
@@ -56,71 +56,97 @@ class Api extends Http {
 	 * 
 	 * @return array
 	 */ 
-    public function getErrorMessage($code, $message = '')
-    {
-    	$statusTexts = static::$customStatusTexts + Response::$statusTexts;
+	public function getErrorMessage($code, $message = '')
+	{
+		$statusTexts = static::$customStatusTexts + Response::$statusTexts;
 
-        $message = (isset($statusTexts[$code]) && !$message) ? $statusTexts[$code] : $message;
+		$message = (isset($statusTexts[$code]) && !$message) ? $statusTexts[$code] : $message;
 
-        return [
-            'code' => intval($code),
-            'message' => $message
-        ];
-    }
+		return [
+			'code' => intval($code),
+			'message' => $message
+		];
+	}
 
-    /**
-     * Set error code and message
-     * 
-     * @param int $code
-     * @param string $message
-     * 
-     * @return App\Helpers\Api
-     */ 
-    public function error($code, $message = '')
-    {
+	/**
+	 * Set error code and message
+	 * 
+	 * @param int $code
+	 * @param string $message
+	 * 
+	 * @return App\Helpers\Api
+	 */ 
+	public function error($code, $message = '')
+	{
 		static::$errors[] = $this->getErrorMessage($code, $message);
 
 		return $this;
-    }
+	}
 
-    /**
-     * Set error codes and messages
-     * 
-     * @param array $errors
-     * 
-     * @return App\Helpers\Api
-     */ 
-    public function errors($errors)
-    {
+	/**
+	 * Set error codes and messages
+	 * 
+	 * @param array $errors
+	 * 
+	 * @return App\Helpers\Api
+	 */ 
+	public function errors($errors)
+	{
 		static::$errors = (array) $errors;
 
 		return $this;
-    }
+	}
 
-    /**
-     * Determine if the error list is empty or not
-     * 
-     * @return bool
-     */ 
-    public function hasErrors()
-    {
+	/**
+	 * Determine if the error list is empty or not
+	 * 
+	 * @return bool
+	 */ 
+	public function hasErrors()
+	{
 		return (!empty(static::$errors));
-    }
+	}
 
-    /**
+	/**
 	 * Respone json errors payload
 	 * 
 	 * @param int $status
 	 * 
 	 * @return \Response
 	 */ 
-    public function response($status = 400)
-    {
+	public function response($status = 400)
+	{
 		$errors = static::$errors;
 		static::$errors = [];
 
 		return response()->json([
-		    'errors' => $errors
+			'errors' => $errors
 		], $status);
-    }
+	}
+
+	public function validator($error)
+	{
+		if (!is_array($error))
+		{
+			try 
+			{
+				$error = $error->errors()->all();
+			} 
+			catch (\Exception $e) {}
+		}
+
+		$this->validatorError($error);
+
+		return $this;
+	}
+
+	public function validatorError(array $errors)
+	{
+		foreach ($errors as $message) 
+		{
+			$this->error(1000, $message);
+		}
+
+		return $this;
+	}
 }
