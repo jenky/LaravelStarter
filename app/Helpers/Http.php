@@ -6,11 +6,11 @@ class Http extends Base {
 	{
 		$subdomain = str_replace(config('app.domain'), '', '.' . $_SERVER['HTTP_HOST']);
 		
-		if (strpos($subdomain, $pattern) !== false)
-        {
-      		return true;
-        }
+		if (str_contains($subdomain, $pattern))
+		{
+			return true;
+		}
 
-        return false;
+		return false;
 	}
 }

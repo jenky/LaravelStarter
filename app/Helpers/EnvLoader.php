@@ -24,13 +24,13 @@ class EnvLoader extends Base {
 		foreach ($configs as $env => $config) 
 		{
 			if ($this->app->environment($env)) 
-        	{
-        		if (!empty($config) && is_array($config))
-        		{
-        			$config = array_dot($config);
-        			config($config);
-        		}
-        	}
+			{
+				if (!empty($config) && is_array($config))
+				{
+					$config = array_dot($config);
+					config($config);
+				}
+			}
 		}
 
 		return $this;
@@ -48,15 +48,15 @@ class EnvLoader extends Base {
 		foreach ($configs as $env => $config) 
 		{
 			if ($this->app->environment($env)) 
-        	{
-        		if (!empty($config) && is_array($config))
-        		{
-        			foreach ($config as $_config) 
-        			{
-        				$this->app->register($_config);
-        			}        				
-        		}
-        	}
+			{
+				if (!empty($config) && is_array($config))
+				{
+					foreach ($config as $_config) 
+					{
+						$this->app->register($_config);
+					}        				
+				}
+			}
 		}
 
 		return $this;
@@ -74,15 +74,15 @@ class EnvLoader extends Base {
 		foreach ($configs as $env => $config) 
 		{
 			if ($this->app->environment($env)) 
-        	{
-        		if (!empty($config) && is_array($config))
-        		{
-        			foreach ($config as $alias => $class) 
-        			{
-        				$this->loader->alias($alias, $class);
-        			}        				
-        		}
-        	}
+			{
+				if (!empty($config) && is_array($config))
+				{
+					foreach ($config as $alias => $class) 
+					{
+						$this->loader->alias($alias, $class);
+					}        				
+				}
+			}
 		}
 
 		return $this;
