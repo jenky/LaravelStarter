@@ -10,7 +10,7 @@ class Api extends Http {
 	 * @var array
 	 */ 
 	public static $customStatusTexts = [
-		1000 => 'Validation fails'
+		1000 => 'Validation Failed'
 	];
 
 	/**
@@ -124,7 +124,7 @@ class Api extends Http {
 		], $status);
 	}
 
-	public function validator($error)
+	public function validator($error, $response = true)
 	{
 		if (!is_array($error))
 		{
@@ -137,14 +137,14 @@ class Api extends Http {
 
 		$this->validatorError($error);
 
-		return $this;
+		return $response ? $this->response(422) : $this;
 	}
 
-	public function validatorError(array $errors)
+	public function validatorError(array $errors, $code = 1000)
 	{
 		foreach ($errors as $message) 
 		{
-			$this->error(1000, $message);
+			$this->error($code, $message);
 		}
 
 		return $this;
