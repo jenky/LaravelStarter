@@ -202,19 +202,19 @@ gulp.task('version', ['js:pub', 'css:pub', 'css:vendor'], function() {
 //////////////////////////////////////////////////
 
 gulp.task('js:watch', function () {
-  gulp.watch(paths.app.assets + '/js/**/*.js', ['js:pub']);
+  gulp.watch(paths.app.assets + '/js/**/*.js', ['js:pub', 'version']);
 });
 
 gulp.task('less:watch', function () {
-  gulp.watch(paths.app.assets + '/less/**/*.less', ['css:pub']);
+  gulp.watch(paths.app.assets + '/less/**/*.less', ['css:pub', 'version']);
 });
 
 gulp.task('sass:watch', function () {
-  gulp.watch(paths.app.assets + '/sass/**/*.scss', ['css:pub']);
+  gulp.watch(paths.app.assets + '/sass/**/*.scss', ['css:pub', 'version']);
 });
 
 gulp.task('css:watch', function () {
-  gulp.watch([paths.app.assets + '/css/*.css', paths.app.assets + '/vendor/**/*.css'], ['css:vendor', 'css:pub']);
+  gulp.watch([paths.app.assets + '/css/**/*.css', paths.app.assets + '/vendor/**/*.css'], ['css:vendor', 'css:pub', 'version']);
 });
 
 //////////////////////////////////////////////////
@@ -245,4 +245,4 @@ gulp.task('build:dev', []);
 gulp.task('build:prod', []);
 
 // gulp clean:pre && gulp TASK && gulp clean:post
-gulp.task('default', ['js:pub', /*'js:lib',*/ 'css:vendor', 'css:pub', 'fonts:pub', 'js:watch', 'less:watch', 'sass:watch', 'version']);
+gulp.task('default', ['js:pub', /*'js:lib',*/ 'css:vendor', 'css:pub', 'fonts:pub', 'js:watch', 'less:watch', 'sass:watch', 'css:watch', 'version']);
