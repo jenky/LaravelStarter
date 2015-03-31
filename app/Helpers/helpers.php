@@ -147,3 +147,29 @@ if (!function_exists('vd'))
 		array_map(function($x) { var_dump($x);die; }, func_get_args());
 	}
 }
+
+if (!function_exists('get_update_rules')) 
+{
+	/**
+	 * Get the validation update rules
+	 *
+	 * @param  array
+	 * @return void
+	 */
+	function get_update_rules(array $rules)
+	{
+		foreach ($rules as &$rule) 
+		{
+			if (is_array($rule))
+			{
+				array_unshift($rule, 'sometimes');
+			}
+			else
+			{
+				$rule = 'sometimes|' . $rule;
+			}
+		}
+
+		return $rules;
+	}
+}
