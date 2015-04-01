@@ -135,9 +135,9 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
-        
-        'Collective\Html\HtmlServiceProvider',
-        'Jenky\LaravelEnvLoader\EnvLoaderServiceProvider',
+		
+		'Collective\Html\HtmlServiceProvider',
+		'Jenky\LaravelEnvLoader\EnvLoaderServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -148,7 +148,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
-        'App\Providers\BladeServiceProvider',
+		'App\Providers\BladeServiceProvider',
 	],
 
 	/*
@@ -196,7 +196,7 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-        
+		
 		'Form' => 'Collective\Html\FormFacade',
 		'Html' => 'Collective\Html\HtmlFacade',
 		'Carbon'    => 'Carbon\Carbon',
