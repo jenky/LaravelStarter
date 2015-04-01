@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'debug' => env('APP_DEBUG'),
+	'debug' => env('APP_DEBUG', false),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -137,6 +137,7 @@ return [
 		'Illuminate\View\ViewServiceProvider',
         
         'Collective\Html\HtmlServiceProvider',
+        'Jenky\LaravelEnvLoader\EnvLoaderServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -199,6 +200,7 @@ return [
 		'Form' => 'Collective\Html\FormFacade',
 		'Html' => 'Collective\Html\HtmlFacade',
 		'Carbon'    => 'Carbon\Carbon',
+		'EnvLoader' => 'Jenky\LaravelEnvLoader\Facades\Loader',
 	],
 
 ];

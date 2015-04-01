@@ -1,6 +1,7 @@
 <?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use EnvLoader;
 
 class ConfigServiceProvider extends ServiceProvider {
 
@@ -19,7 +20,7 @@ class ConfigServiceProvider extends ServiceProvider {
 			//
 		]);
 
-        get_helper('EnvLoader')->loadEnvConfigs();
+        EnvLoader::loadConfigs();
 
         /* Set config domain */
         $parse = parse_url(config('app.url'));

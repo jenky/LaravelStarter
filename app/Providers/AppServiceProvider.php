@@ -1,6 +1,7 @@
 <?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use EnvLoader;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -30,8 +31,7 @@ class AppServiceProvider extends ServiceProvider {
 			'App\Services\Registrar'
 		);
 
-		get_helper('EnvLoader')->loadEnvProviders()
-			->loadEnvAliases();
+		EnvLoader::loadProviders()->loadAliases();
 	}
 
 }

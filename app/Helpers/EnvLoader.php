@@ -1,5 +1,15 @@
 <?php namespace App\Helpers;
 
+/**
+ * WARNING - DEPRECATED
+ * 
+ * This class no longer in use, please use this package
+ * composer require jenky/laravel-envloader ~1.0
+ * 
+ * @see https://github.com/jenky/laravel-envloader
+ * 
+ */
+
 use Illuminate\Foundation\AliasLoader;
 
 class EnvLoader extends Base {
