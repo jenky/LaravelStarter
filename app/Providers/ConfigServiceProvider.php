@@ -20,13 +20,11 @@ class ConfigServiceProvider extends ServiceProvider {
 			//
 		]);
 
-        EnvLoader::loadConfigs();
-
-        /* Set config domain */
-        $parse = parse_url(config('app.url'));
-        config([
-            'app.domain' => $parse['host']
-        ]);
+		/* Set config domain */
+		$parse = parse_url(config('app.url'));
+		config([
+			'app.domain' => $parse['host']
+		]);
 	}
 
 }

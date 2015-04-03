@@ -200,7 +200,7 @@ return [
 		'Form' => 'Collective\Html\FormFacade',
 		'Html' => 'Collective\Html\HtmlFacade',
 		'Carbon'    => 'Carbon\Carbon',
-		'EnvLoader' => 'Jenky\LaravelEnvLoader\Facades\Loader',
+		
 	],
 
 ];

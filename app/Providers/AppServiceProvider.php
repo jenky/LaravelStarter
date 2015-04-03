@@ -30,8 +30,6 @@ class AppServiceProvider extends ServiceProvider {
 			'Illuminate\Contracts\Auth\Registrar',
 			'App\Services\Registrar'
 		);
-
-		EnvLoader::loadProviders()->loadAliases();
 	}
 
 }
