@@ -37,7 +37,7 @@ if (!function_exists('datetime'))
 	 * @return Carbon
 	 */ 
 
-	function datetime($time, $timezone = null)
+	function datetime($time, $timezone = null, $reverse = false)
 	{
 		$defaultTz = config('app.timezone');
 
@@ -49,16 +49,24 @@ if (!function_exists('datetime'))
 		if (!in_array($timezone, timezone_identifiers_list()))
 		{
 			$timezone = false;
-		}
+		}		
 
 		if ($timezone)
 		{
-			return Carbon::parse($time, $defaultTz)->setTimezone($timezone);
+			if ($time instanceof Carbon\Carbon)
+			{
+				return $time->tz($timezone);
+			}
+
+			return $reverse 
+				? Carbon::parse($time, $timezone)->tz($defaultTz)
+				: Carbon::parse($time, $defaultTz)->tz($timezone);
 		}
 
 		return Carbon::parse($time, $defaultTz); 
 	}
 }
+
 
 if (!function_exists('get_fullname')) 
 {
@@ -160,11 +168,11 @@ if (!function_exists('get_update_rules'))
 	{
 		foreach ($rules as &$rule) 
 		{
-			if (is_array($rule))
-			{
+			if (is_array($rule) && !in_array('sometimes', $rule))
+			{					
 				array_unshift($rule, 'sometimes');
 			}
-			else
+			else if (is_string($rules) && !str_contains('sometimes'))
 			{
 				$rule = 'sometimes|' . $rule;
 			}
