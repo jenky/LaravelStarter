@@ -74,7 +74,7 @@ var paths = {
 //////////////////////////////////////////////////
 
 gulp.task('js:vendor', function() {
-  gulp.src([
+  return gulp.src([
     // Specific order required by Bootstrap
     // paths.bower.bootstrap + '/js/transition.js',
     // paths.bower.bootstrap + '/js/alert.js',
@@ -109,7 +109,7 @@ gulp.task('js:vendor', function() {
 });
 
 gulp.task('js:app', function() {
-  gulp.src([
+  return gulp.src([
     // Supporting specific order
     paths.app.assets + '/js/**/*.js'
   ])
@@ -125,7 +125,7 @@ gulp.task('js:app', function() {
 
 
 gulp.task('js:pub', ['js:vendor', 'js:app'], function() {
-  gulp.src(paths.app.build + '/js/**/*.js')
+  return gulp.src(paths.app.build + '/js/**/*.js')
     .pipe(plumber({
         handleError: function (err) {
             console.log(err);
@@ -141,7 +141,7 @@ gulp.task('js:pub', ['js:vendor', 'js:app'], function() {
 //////////////////////////////////////////////////
 
 gulp.task('less:build', function () {
-  gulp.src([
+  return gulp.src([
     paths.app.assets + '/less/*.less', 
     paths.app.assets + '/less/**/*.less'
   ])
@@ -150,7 +150,7 @@ gulp.task('less:build', function () {
 });
 
 gulp.task('sass:build', function () {
-  gulp.src([
+  return gulp.src([
     paths.app.assets + '/sass/*.scss', 
     paths.app.assets + '/sass/**/*.scss'
   ])
@@ -159,7 +159,7 @@ gulp.task('sass:build', function () {
 });
 
 gulp.task('css:vendor', function() {
-  gulp.src([    
+  return gulp.src([    
     paths.bower.bootstrap + '/dist/css/bootstrap.min.css',
     paths.bower.fontAwesome + '/css/font-awesome.min.css',
 
@@ -172,7 +172,7 @@ gulp.task('css:vendor', function() {
 });
 
 gulp.task('css:pub', ['less:build', 'sass:build'], function() {
-  gulp.src([
+  return gulp.src([
     paths.app.assets + '/css/**/*.css',
     paths.app.build + '/css/**/*.css'
   ])
@@ -183,7 +183,7 @@ gulp.task('css:pub', ['less:build', 'sass:build'], function() {
 });
 
 gulp.task('fonts:pub', function () {
-  gulp.src([
+  return gulp.src([
     paths.bower.bootstrap + '/fonts/*.*',
     paths.bower.fontAwesome + '/fonts/*-webfont.*'
   ])
@@ -197,7 +197,7 @@ gulp.task('version', ['clean', 'js:pub', 'css:pub', 'css:vendor'], function() {
   //   mix.version(['js/app.js', 'js/vendor.js', 'css/app.css', 'css/vendor.css']);
   //   mix.copy(paths.public.root + '/fonts', paths.public.root + '/build/fonts');
   // });
-  gulp.src([
+  return gulp.src([
     paths.public.root + '/js/*.js',
     paths.public.root + '/css/*.css'
   ], {base: path.join(process.cwd(), paths.public.root)})
@@ -232,7 +232,7 @@ gulp.task('css:watch', function () {
 //////////////////////////////////////////////////
 
 gulp.task('clean:pre', function () {
-  gulp.src([
+  return gulp.src([
     paths.app.build + '/**/*',
     '!' + paths.app.build + '/.gitignore',
     paths.public.assets + '/{js,css,fonts}/**/*'
@@ -241,7 +241,7 @@ gulp.task('clean:pre', function () {
 });
 
 gulp.task('clean:post', function () {
-  gulp.src([
+  return gulp.src([
     paths.app.build + '/**/*',
   ])
     .pipe(clean());
