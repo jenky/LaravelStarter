@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////
 
 var gulp = require('gulp');
-var elixir = require('laravel-elixir');
+// var elixir = require('laravel-elixir');
 
 // JS
 // var jshint = require('gulp-jshint');
@@ -25,9 +25,10 @@ var minifycss = require('gulp-minify-css');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 // var cache = require('gulp-cache');
-// var clean = require('gulp-clean');
+var del = require('del');
 var rev = require('gulp-rev');
 var plumber = require('gulp-plumber');
+var path = require('path');
 
 // DEV
 // var notify = require('gulp-notify');
@@ -186,15 +187,24 @@ gulp.task('fonts:pub', function () {
     paths.bower.bootstrap + '/fonts/*.*',
     paths.bower.fontAwesome + '/fonts/*-webfont.*'
   ])
-    .pipe(gulp.dest(paths.public.root + '/build/fonts'));
+    .pipe(gulp.dest(paths.public.assets + '/fonts'));
 });
 
 //
 
-gulp.task('version', ['js:pub', 'css:pub', 'css:vendor'], function() {
-  elixir(function(mix) {
-    mix.version(['js/app.js', 'js/vendor.js', 'css/app.css', 'css/vendor.css']);
-  });
+gulp.task('version', ['clean', 'js:pub', 'css:pub', 'css:vendor'], function() {
+  // elixir(function(mix) {
+  //   mix.version(['js/app.js', 'js/vendor.js', 'css/app.css', 'css/vendor.css']);
+  //   mix.copy(paths.public.root + '/fonts', paths.public.root + '/build/fonts');
+  // });
+  gulp.src([
+    paths.public.root + '/js/*.js',
+    paths.public.root + '/css/*.css'
+  ], {base: path.join(process.cwd(), paths.public.root)})
+    .pipe(rev())
+    .pipe(gulp.dest(paths.public.assets))
+    .pipe(rev.manifest())
+    .pipe(gulp.dest(paths.public.assets));
 });
 
 //////////////////////////////////////////////////
@@ -235,6 +245,14 @@ gulp.task('clean:post', function () {
     paths.app.build + '/**/*',
   ])
     .pipe(clean());
+});
+
+gulp.task('clean', function(cb) {
+  del([
+    paths.public.assets + '/js/**/*',
+    paths.public.assets + '/css/**/*',
+    paths.public.assets + '/rev-manifest.json'
+  ], cb);
 });
 
 //////////////////////////////////////////////////
