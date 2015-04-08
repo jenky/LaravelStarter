@@ -10,7 +10,7 @@ class Api extends Http {
 	 * @var array
 	 */ 
 	public static $customStatusTexts = [
-		1000 => 'Validation Failed'
+		1000 => 'Validation Failed',
 	];
 
 	/**
@@ -108,20 +108,40 @@ class Api extends Http {
 	}
 
 	/**
+	 * Allias of hasErrors()
+	 * 
+	 * @return bool
+	 */ 
+	public function hasError()
+	{
+		return $this->hasErrors();
+	}
+
+	/**
+	 * Get Errors
+	 * 
+	 * @return array
+	 */ 
+	public function getErrors()
+	{
+		return static::$errors;
+	}
+
+	/**
 	 * Respone json errors payload
 	 * 
 	 * @param int $status
 	 * 
 	 * @return \Response
 	 */ 
-	public function response($status = 400)
+	public function response($status = 400, array $headers = array(), $options = 0)
 	{
 		$errors = static::$errors;
 		static::$errors = [];
 
 		return response()->json([
 			'errors' => $errors
-		], $status);
+		], $status, $headers, $options);
 	}
 
 	public function validator($error, $response = true)
