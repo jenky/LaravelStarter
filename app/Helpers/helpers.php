@@ -172,7 +172,7 @@ if (!function_exists('get_update_rules'))
 			{					
 				array_unshift($rule, 'sometimes');
 			}
-			else if (is_string($rules) && !str_contains('sometimes'))
+			else if (is_string($rule) && !str_contains('sometimes', $rule))
 			{
 				$rule = 'sometimes|' . $rule;
 			}
