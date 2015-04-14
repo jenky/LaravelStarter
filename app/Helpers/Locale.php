@@ -1,5 +1,7 @@
 <?php namespace App\Helpers;
 
+use DateTimeZone;
+
 class Locale
 {
 	public static $countries = array(
@@ -510,5 +512,35 @@ class Locale
 		$dialingCodes = static::$dialingCodes;
 
 		return isset($dialingCodes[$code]) ? $dialingCodes[$code] : false;
+	}
+
+	public static function getTimezones($group = false)
+	{
+		$output = [];
+		
+		$tzlist = DateTimeZone::listIdentifiers(DateTimeZone::ALL);
+
+		foreach ($tzlist as $timezone) 
+		{
+			if ($group)
+			{
+				$zone = explode('/', $timezone); // 0 => Continent, 1 => City
+			
+				// Only use "friendly" continent names
+				if ($zone[0] == 'Africa' || $zone[0] == 'America' || $zone[0] == 'Antarctica' || $zone[0] == 'Arctic' || $zone[0] == 'Asia' || $zone[0] == 'Atlantic' || $zone[0] == 'Australia' || $zone[0] == 'Europe' || $zone[0] == 'Indian' || $zone[0] == 'Pacific')
+				{        
+					if (isset($zone[1]) != '')
+					{
+						$output[$zone[0]][$zone[0]. '/' . $zone[1]] = str_replace('_', ' ', $zone[1]); // Creates array(DateTimeZone => 'Friendly name')
+					} 
+				}
+			}
+			else
+			{
+				$output[$timezone] = $timezone;				
+			}
+		}
+
+		return $output;
 	}
 }
