@@ -11,5 +11,6 @@ return [
 		'Laracasts\Generators\GeneratorsServiceProvider',
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
+		'App\Providers\ErrorServiceProvider', // filp/whoops
 	],
 ];
