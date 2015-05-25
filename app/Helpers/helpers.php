@@ -37,7 +37,7 @@ if (!function_exists('datetime'))
 	 * @return Carbon
 	 */ 
 
-	function datetime($time, $timezone = null, $reverse = false)
+	function datetime($time = null, $timezone = null, $reverse = false)
 	{
 		$defaultTz = config('app.timezone');
 
