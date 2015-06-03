@@ -1,4 +1,4 @@
-@if (isset($spaceless))
+@if (config('view.minify'))
 @spaceless
 @include('layouts.main')
 @endspaceless
