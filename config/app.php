@@ -138,6 +138,8 @@ return [
 		
 		'Collective\Html\HtmlServiceProvider',
 		'Jenky\LaravelEnvLoader\EnvLoaderServiceProvider',
+		'Laracasts\Flash\FlashServiceProvider',
+		'GrahamCampbell\Exceptions\ExceptionsServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -199,7 +201,8 @@ return [
 		
 		'Form' => 'Collective\Html\FormFacade',
 		'Html' => 'Collective\Html\HtmlFacade',
-		'Carbon'    => 'Carbon\Carbon',
+		'Carbon' => 'Carbon\Carbon',
+		'Flash' => 'Laracasts\Flash\Flash',
 		
 	],
 
