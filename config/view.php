@@ -30,4 +30,13 @@ return [
 
     'compiled' => realpath(storage_path('framework/views')),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Minify Html
+    |--------------------------------------------------------------------------
+    |
+    | This option determines the html output will be minify or not.
+    |
+    */
+    'minify' => false,
 ];

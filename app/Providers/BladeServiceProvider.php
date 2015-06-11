@@ -1,10 +1,12 @@
-<?php namespace App\Providers;
+<?php 
+
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Blade;
 
-class BladeServiceProvider extends ServiceProvider {
-
+class BladeServiceProvider extends ServiceProvider 
+{
 	/**
 	 * Bootstrap the application services.
 	 *
@@ -13,13 +15,12 @@ class BladeServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		// Twig Spaceless equivalent
-		Blade::extend(function($view, $compiler){
-			$pattern = $compiler->createPlainMatcher('spaceless');
-			return preg_replace($pattern, '$1<?php ob_start(); ?>$2', $view);
+		Blade::directive('spaceless', function($expression) {
+			return "<?php ob_start();\n ?>";
 		});
-		Blade::extend(function($view, $compiler){
-			$pattern = $compiler->createPlainMatcher('endspaceless');
-			return preg_replace($pattern, '$1<?php echo trim(preg_replace(\'/>\s+</\', \'><\', ob_get_clean())); ?>$2', $view);
+
+		Blade::directive('endspaceless', function($expression) {
+			return "<?php echo trim(preg_replace('/>\s+</', '><', ob_get_clean()));\n ?>";
 		});
 	}
 
@@ -32,5 +33,4 @@ class BladeServiceProvider extends ServiceProvider {
 	{
 		//
 	}
-
 }
