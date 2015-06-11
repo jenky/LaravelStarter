@@ -207,3 +207,75 @@ if ( ! function_exists('cache_buster'))
 		throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
 	}
 }
+
+if ( ! function_exists('random_filename'))
+{
+	/**
+	* Generate random filename
+	*
+	* @param mixed $file
+	* @param int  $length
+	* @param Closure
+	* @return string
+	*/
+	function random_filename($file, $length = 20, Closure $closure = null)
+	{
+		if ($file instanceof Symfony\Component\HttpFoundation\File\UploadedFile)
+		{
+			$extension = $file->getClientOriginalExtension();
+		}
+		else
+		{
+			$extension = pathinfo($file, PATHINFO_EXTENSION);
+		}
+
+		$name = str_random($length);
+
+		if ($closure)
+		{
+			$name = $closure($name);
+		}
+
+		return $name . '.' . $extension;
+	}
+}
+
+if ( ! function_exists('get_domain'))
+{
+	/**
+	 * Get the domain name from url
+	 * 
+	 * @param string $url
+	 * @return string
+	 */ 
+	function get_domain($url)
+	{
+		$pieces = parse_url($url);
+		$domain = isset($pieces['host']) ? $pieces['host'] : '';
+		
+		if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) 
+		{
+			return $regs['domain'];
+		}
+
+		return false;
+	}
+}
+
+if ( ! function_exists('root_domain'))
+{
+	/**
+	 * Replace the subdomain with domain
+	 * 
+	 * @param string $url
+	 * @return string
+	 */ 
+	function root_domain($url)
+	{
+		$pieces = parse_url($url);
+		$host = isset($pieces['host']) ? $pieces['host'] : '';
+		$domain = get_domain($url);
+		
+		return str_replace($host, $domain, $url);
+	}
+}
