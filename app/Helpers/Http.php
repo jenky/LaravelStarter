@@ -1,7 +1,9 @@
-<?php namespace App\Helpers;
+<?php 
 
-class Http extends Base {
+namespace App\Helpers;
 
+class Http extends Base 
+{
 	public function subdomainIs($pattern)
 	{
 		$subdomain = str_replace(config('app.domain'), '', '.' . $_SERVER['HTTP_HOST']);

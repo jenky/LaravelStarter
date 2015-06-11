@@ -1,7 +1,9 @@
-<?php namespace App\Helpers;
+<?php 
 
-class Base {
+namespace App\Helpers;
 
+class Base 
+{
 	public $app;
 
 	public function __construct()

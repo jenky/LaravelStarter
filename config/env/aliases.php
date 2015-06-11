@@ -8,6 +8,6 @@
 
 return [
 	'local' => [
-		'Debugbar' => 'Barryvdh\Debugbar\Facade',
+		'Debugbar' => Barryvdh\Debugbar\Facade::class,
 	],
 ];

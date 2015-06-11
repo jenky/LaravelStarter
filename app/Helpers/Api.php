@@ -1,9 +1,11 @@
-<?php namespace App\Helpers;
+<?php 
+
+namespace App\Helpers;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class Api extends Http {
-
+class Api extends Http 
+{
 	/**
 	 * List of custom error codes and messages
 	 * 

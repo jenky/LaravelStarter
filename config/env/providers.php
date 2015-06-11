@@ -8,9 +8,8 @@
 
 return [
 	'local' => [
-		'Laracasts\Generators\GeneratorsServiceProvider',
-		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-		'Barryvdh\Debugbar\ServiceProvider',
-		'App\Providers\ErrorServiceProvider', // filp/whoops
+		Laracasts\Generators\GeneratorsServiceProvider::class,
+		Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+		Barryvdh\Debugbar\ServiceProvider::class,
 	],
 ];
