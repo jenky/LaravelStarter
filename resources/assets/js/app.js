@@ -32,7 +32,7 @@ $(function() {
 
         var $this = $(this),
             url = $this.attr('href') || false,
-            method = $this.data('method') || 'POST',
+            method = $this.data('method') || 'DELETE',
             message = $this.data('message') || 'Are you sure?',
             params = $this.data('params') || {},
             remove = $this.data('remove') || false;
