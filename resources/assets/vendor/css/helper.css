@@ -828,14 +828,30 @@
 }
 
 .full-height {
-    height: 100%;
+  height: 100%;
 }
 
 .full-width {
-    width: 100%;
+  width: 100%;
 }
 
 .full-size {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.f-bold {
+  font-weight: bold;
+}
+
+.f-italic {
+  font-style: italic;
 }
