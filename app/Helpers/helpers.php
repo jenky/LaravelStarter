@@ -67,32 +67,7 @@ if (!function_exists('datetime'))
 	}
 }
 
-
-if (!function_exists('get_fullname')) 
-{
-	function get_fullname($user, $first_name = 'first_name', $last_name = 'last_name') 
-	{
-		$firstname = $lastname = '';
-
-		if (is_object($user))
-		{
-			$firstname = isset($user->$first_name) ? $user->$first_name : '';
-			$lastname = isset($user->$last_name) ? $user->$last_name : '';
-		}
-
-		if (is_array($user))
-		{
-			$firstname = isset($user[$first_name]) ? $user[$first_name] : '';
-			$lastname = isset($user[$last_name]) ? $user[$last_name] : '';
-		}
-
-		$fullname = $firstname . ' ' . $lastname;
-
-		return $fullname;
-	}
-}
-
-if (!function_exists('get_helper')) 
+if (!function_exists('helper')) 
 {
 	/**
 	 * Create helper object in App\Helpers
@@ -115,7 +90,7 @@ if (!function_exists('get_helper'))
 		}
 	}
 
-	function get_helper($helperClass, $namespace = '\\App\\Helpers\\') 
+	function helper($helperClass, $namespace = '\\App\\Helpers\\') 
 	{
 		$class = $namespace . $helperClass;
 
