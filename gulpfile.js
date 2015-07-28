@@ -79,13 +79,13 @@ elixir(function(mix) {
      |--------------------------------------------------------------------------
      */
 
-    // JS - Vendor
+    // Vendor
     .scripts([
         rootPath(paths.bower.jquery + '/dist/jquery.js'),
         rootPath(paths.bower.bootstrap + '/dist/js/bootstrap.js'),
         'vendor**/*.js'
     ], config.get('public.js.outputFolder') + '/vendor.js')
-    // JS - jsName || App
+    // jsName || App
     .scriptsIn(config.get('assets.js.folder') + '/' + paths.prefix, config.get('public.js.outputFolder') + '/' + jsName)
 
     /*
@@ -94,13 +94,13 @@ elixir(function(mix) {
      |--------------------------------------------------------------------------
      */
 
-    // CSS - Vendor
+    // Vendor
     .styles([
         rootPath(paths.bower.bootstrap + '/dist/css/bootstrap.css'),
         rootPath(paths.bower.fontAwesome + '/css/font-awesome.css'),
         'vendor/**/*.css'
     ], config.get('public.css.outputFolder') + '/vendor.css')
-    // CSS - jsName || App
+    // cssName || App
     .stylesIn(config.get('assets.css.folder') + '/' + paths.prefix, config.get('public.css.outputFolder') + '/' + cssName)
 
     /*
