@@ -144,6 +144,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        App\Providers\ConfigServiceProvider::class,
+        App\Providers\BladeServiceProvider::class,
+
+        // Jenky\LaravelEnvLoader\EnvLoaderServiceProvider::class,
+        // Collective\Html\HtmlServiceProvider::class,
+        // GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
+        // Laracasts\Flash\FlashServiceProvider::class,
     ],
 
     /*
