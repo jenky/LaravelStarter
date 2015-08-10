@@ -136,6 +136,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        
+        Jenky\LaravelEnvLoader\EnvLoaderServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -147,10 +149,9 @@ return [
         App\Providers\ConfigServiceProvider::class,
         App\Providers\BladeServiceProvider::class,
 
-        // Jenky\LaravelEnvLoader\EnvLoaderServiceProvider::class,
-        // Collective\Html\HtmlServiceProvider::class,
-        // GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
-        // Laracasts\Flash\FlashServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
     ],
 
     /*
