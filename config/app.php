@@ -138,6 +138,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         
         Jenky\LaravelEnvLoader\EnvLoaderServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -147,11 +150,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\ConfigServiceProvider::class,
-        App\Providers\BladeServiceProvider::class,
-
-        Collective\Html\HtmlServiceProvider::class,
-        GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
-        Laracasts\Flash\FlashServiceProvider::class,
+        App\Providers\BladeServiceProvider::class,        
     ],
 
     /*
