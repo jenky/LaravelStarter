@@ -65,7 +65,7 @@ class Api extends Http
 		$message = (isset($statusTexts[$code]) && !$message) ? $statusTexts[$code] : $message;
 
 		return [
-			'code' => intval($code),
+			'code' => $code,
 			'message' => $message
 		];
 	}
