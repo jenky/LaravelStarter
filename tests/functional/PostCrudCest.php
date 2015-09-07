@@ -2,20 +2,20 @@
 
 class PostCrudCest
 {
+
     private $postAttributes;
 
     public function __construct()
     {
         $this->postAttributes = [
-            'title'      => 'Hello Universe',
-            'body'       => 'You are so awesome',
+            'title' => 'Hello Universe',
+            'body' => 'You are so awesome',
             'created_at' => new DateTime(),
-            'updated_at' => new DateTime(),
+            'updated_at' => new DateTime()
         ];
     }
 
     // tests
-
     public function createPost(FunctionalTester $I)
     {
         PostsPage::of($I)->createPost(['title' => 'Hello world', 'body' => 'And greetings for all']);
@@ -27,15 +27,15 @@ class PostCrudCest
     {
         PostsPage::of($I)->createPost();
         $I->seeCurrentUrlEquals(PostsPage::route('/create'));
-        $I->see('The body field is required.', '.error');
-        $I->see('The title field is required.', '.error');
+        $I->see('The body field is required.','.error');
+        $I->see('The title field is required.','.error');
     }
 
     public function editPost(FunctionalTester $I)
     {
-        $randTitle = 'Edited at '.microtime();
+        $randTitle = "Edited at " . microtime();
         $id = $I->haveRecord('posts', $this->postAttributes);
-        PostsPage::of($I)->editPost($id, ['title' => 'Edited at '.$randTitle]);
+        PostsPage::of($I)->editPost($id, ['title' => 'Edited at ' . $randTitle]);
         $I->seeCurrentUrlEquals(PostsPage::route("/$id"));
         $I->see('Show Post', 'h1');
         $I->see($randTitle);
