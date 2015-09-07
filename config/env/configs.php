@@ -8,8 +8,8 @@
 
 return [
 	'local' => [
-		// 'app' => [
-		// 	'url' => 'http://mylocaldomain',
-		// ],
+		'app' => [
+			'url' => 'http://apidocs.local',
+		],
 	],
 ];

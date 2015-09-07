@@ -5,6 +5,13 @@
     "jquery": "latest",
     "bootstrap": "latest",    
     "font-awesome": "latest",
-    "bootbox": "makeusabrew/bootbox"
+    "bootbox": "makeusabrew/bootbox",
+    "pace": "HubSpot/pace",
+    "animate.css": "latest",
+    "jquery.scrollbar": "latest",
+    "locstor": "latest",
+    "moment": "latest",
+    "bLazy": "dinbror/blazy",
+    "toastr": "latest"
   }
 }

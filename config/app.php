@@ -141,6 +141,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
+        Marcelgwerder\ApiHandler\ApiHandlerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -205,6 +207,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Carbon' => Carbon\Carbon::class,
         'Flash' => Laracasts\Flash\Flash::class,
+        'ApiHandler' => Marcelgwerder\ApiHandler\Facades\ApiHandler::class,
     ],
 
 ];
