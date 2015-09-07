@@ -1,5 +1,4 @@
 <?php
-
 $I = new FunctionalTester($scenario);
 $I->wantTo('submit a form');
 $I->amOnPage('/form');

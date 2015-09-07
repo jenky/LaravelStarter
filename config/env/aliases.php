@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Environment Name => Aliases.
+ * Environment Name => Aliases
  *
  * @return array
- */
+ */ 
 
 return [
-    'local' => [
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-    ],
+	'local' => [
+		'Debugbar' => Barryvdh\Debugbar\Facade::class,
+	],
 ];

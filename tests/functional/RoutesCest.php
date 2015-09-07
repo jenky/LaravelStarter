@@ -2,6 +2,7 @@
 
 class RoutesCest
 {
+
     public function openPageByRoute(FunctionalTester $I)
     {
         $I->amOnRoute('posts.index');
@@ -22,4 +23,5 @@ class RoutesCest
         $I->seeResponseCodeIs(200);
         $I->see('Domain route');
     }
+
 }

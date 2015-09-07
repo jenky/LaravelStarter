@@ -5,7 +5,6 @@ class PostsResourceCest
     protected $endpoint = '/api/posts';
 
     // tests
-
     public function getAllPosts(ApiTester $I)
     {
         $id = (string) $this->havePost($I, ['title' => 'Game of Thrones']);
@@ -67,8 +66,8 @@ class PostsResourceCest
     private function havePost(ApiTester $I, $data = [])
     {
         $data = array_merge([
-                'title'      => 'Game of Thrones',
-                'body'       => 'Body',
+                'title' => 'Game of Thrones',
+                'body' => 'Body',
                 'created_at' => new DateTime(),
                 'updated_at' => new  DateTime(),
         ], $data);

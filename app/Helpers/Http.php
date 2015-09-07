@@ -1,18 +1,18 @@
-<?php
+<?php 
 
+namespace App\Helpers;
 
-namespace app\Helpers;
-
-class Http extends Base
+class Http extends Base 
 {
-    public function subdomainIs($pattern)
-    {
-        $subdomain = str_replace(config('app.domain'), '', '.'.$_SERVER['HTTP_HOST']);
+	public function subdomainIs($pattern)
+	{
+		$subdomain = str_replace(config('app.domain'), '', '.' . $_SERVER['HTTP_HOST']);
+		
+		if (str_contains($subdomain, $pattern))
+		{
+			return true;
+		}
 
-        if (str_contains($subdomain, $pattern)) {
-            return true;
-        }
-
-        return false;
-    }
+		return false;
+	}
 }
