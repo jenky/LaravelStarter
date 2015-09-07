@@ -136,7 +136,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        
+
         Jenky\LaravelEnvLoader\EnvLoaderServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
@@ -151,7 +151,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\ConfigServiceProvider::class,
-        App\Providers\BladeServiceProvider::class,        
+        App\Providers\BladeServiceProvider::class,
     ],
 
     /*
@@ -201,10 +201,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
+        'Form'   => Collective\Html\FormFacade::class,
+        'Html'   => Collective\Html\HtmlFacade::class,
         'Carbon' => Carbon\Carbon::class,
-        'Flash' => Laracasts\Flash\Flash::class,
+        'Flash'  => Laracasts\Flash\Flash::class,
     ],
 
 ];
