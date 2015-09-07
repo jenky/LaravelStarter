@@ -1,46 +1,10 @@
 {
   "private": true,
-  "dependencies": {
-    "backbone": "*",
-    "backbone-deep-model": "*",
-    "backbone-react-component": "*",
-    "better-console": "^0.2.4",
-    "bootstrap-sass": "^3.0.0",
-    "extend": "^3.0.0",
-    "formsy-react": "*",
-    "formsy-react-components": "*",    
-    "jquery": "*",
-    "laravel-elixir": "^3.0.0",
-    "lodash": "*",
-    "map-stream": "0.0.6",
-    "node-waves": "*",
-    "react": "^0.13.3",
-    "react-waypoint": "*",
-    "require-dot-file": "^0.4.0",
-    "semantic-ui": "^2.0.7",
-    "underscore": "*",
-    "yamljs": "^0.2.3"
-  },
   "devDependencies": {
-    "gulp": "^3.8.8",
-    "gulp-chmod": "^1.2.0",
-    "gulp-clone": "^1.0.0",
-    "gulp-concat-css": "^2.2.0",
-    "gulp-copy": "0.0.2",
-    "gulp-flatten": "^0.1.1",
-    "gulp-header": "^1.2.2",
-    "gulp-help": "^1.6.0",
-    "gulp-if": "^1.2.5",
-    "gulp-notify": "^2.2.0",
-    "gulp-print": "^1.1.0",
-    "gulp-replace": "^0.5.3",
-    "gulp-rtlcss": "^0.1.4",
-    "gulp-util": "^3.0.6",
-    "gulp-watch": "^4.3.4",
-    "webpack": "*",
-    "jsx-loader": "*",
-    "jstransform-loader": "*",
-    "jsx-control-statements": "*",
-    "chunk-manifest-webpack-plugin": "*"
+    "gulp": "^3.8.8"
+  },
+  "dependencies": {
+    "laravel-elixir": "^3.0.0",
+    "bootstrap-sass": "^3.0.0"
   }
 }
