@@ -1,15 +1,15 @@
 <?php
+
 use App\User;
 use Illuminate\Support\Facades\Hash;
 
 class AuthCest
 {
-
     private $userAttributes;
 
-    public function  __construct()
+    public function __construct()
     {
-        $this->userAttributes= [
+        $this->userAttributes = [
             'email' =>  'john@doe.com',
             'password' => Hash::make('password'),
             'created_at' => new DateTime(),
@@ -27,6 +27,7 @@ class AuthCest
     }
 
     // tests
+
     public function loginUsingUserRecord(FunctionalTester $I)
     {
         $I->dontSeeAuthentication();
@@ -52,5 +53,4 @@ class AuthCest
         $I->seeResponseCodeIs(200);
         $I->see('Hello World');
     }
-
 }

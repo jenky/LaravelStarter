@@ -1,11 +1,12 @@
-<?php 
+<?php
+
 
 namespace App\Helpers;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Str;
 
-class HelperManager 
+class HelperManager
 {
     /**
      * @var \Illuminate\Contracts\Foundation\Application
@@ -20,7 +21,7 @@ class HelperManager
     protected $helper;
 
     /**
-     * Loaded helers
+     * Loaded helers.
      * 
      * @var array
      */
@@ -42,7 +43,7 @@ class HelperManager
     {
         $helper = $this->formatHelperName($helper);
 
-        if (!isset($this->loadedHelpers[$helper])) {
+        if (! isset($this->loadedHelpers[$helper])) {
             $this->loadedHelpers[$helper] = new $helper($this->app);
         }
 
@@ -56,8 +57,7 @@ class HelperManager
     {
         $namespace = $this->app->getNamespace();
 
-        if (!Str::contains($helper, $namespace))
-        {
+        if (! Str::contains($helper, $namespace)) {
             $helper = $namespace.'Helpers\\'.$helper;
         }
 

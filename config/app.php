@@ -136,7 +136,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        
+
         Jenky\LaravelEnvLoader\EnvLoaderServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
@@ -152,7 +152,7 @@ return [
 
         App\Providers\ConfigServiceProvider::class,
         App\Providers\BladeServiceProvider::class,
-        App\Providers\HelperServiceProvider::class,   
+        App\Providers\HelperServiceProvider::class,
     ],
 
     /*
