@@ -21,8 +21,8 @@ class HelperServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('helper', function ($app) { 
-            return new HelperManager($app); 
+        $this->app->singleton('helper', function ($app) {
+            return new HelperManager($app);
         });
 
         $this->app->alias('helper', HelperManager::class);

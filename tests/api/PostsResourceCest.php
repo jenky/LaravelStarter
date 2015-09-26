@@ -5,6 +5,7 @@ class PostsResourceCest
     protected $endpoint = '/api/posts';
 
     // tests
+
     public function getAllPosts(ApiTester $I)
     {
         $id = (string) $this->havePost($I, ['title' => 'Game of Thrones']);

@@ -1,11 +1,12 @@
-<?php 
+<?php
+
 
 namespace App\Helpers;
 
 class Html extends AbstractHelper
 {
     /**
-     * Make list options for dropdown select
+     * Make list options for dropdown select.
      * 
      * @param array|$values List of option values, normaly a recordset from db
      * @param string|$valueField The key name of the array values that will be use for make value="" for the option
@@ -13,26 +14,21 @@ class Html extends AbstractHelper
      * @param string|$labelTemplate IF the $labelField is array use this to make the label
      * 
      * @return array
-     */ 
+     */
     public function getListOptions($values, $valueField, $labelField, $labelTemplate = '%s')
     {
-        $output = array();
+        $output = [];
 
-        foreach ($values as $value) 
-        {
-            if (is_array($labelField))
-            {
-                $labelValues = array();
+        foreach ($values as $value) {
+            if (is_array($labelField)) {
+                $labelValues = [];
 
-                foreach ($labelField as $field) 
-                {
+                foreach ($labelField as $field) {
                     $labelValues[] = $value[$field];
                 }
-                
+
                 $output[$value[$valueField]] = vsprintf($labelTemplate, $labelField);
-            }
-            else
-            {
+            } else {
                 $output[$value[$valueField]] = $value[$labelField];
             }
         }
