@@ -11,5 +11,5 @@ interface Factory
      * 
      * @return void
      */
-    public function make($helper)
+    public function make($helper);
 }
