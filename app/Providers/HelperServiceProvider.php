@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Helpers\HelperManager;
 
 class HelperServiceProvider extends ServiceProvider
 {

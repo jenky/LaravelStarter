@@ -19,6 +19,13 @@ class HelperManager
      */
     protected $helper;
 
+    /**
+     * Loaded helers
+     * 
+     * @var array
+     */
+    protected $loadedHelpers = [];
+
     public function __construct(Application $app)
     {
         $this->app = $app;
@@ -33,6 +40,20 @@ class HelperManager
      */
     public function make($helper)
     {
+        $helper = $this->formatHelperName($helper);
+
+        if (!isset($this->loadedHelpers[$helper])) {
+            $this->loadedHelpers[$helper] = new $helper($this->app);
+        }
+
+        return $this->loadedHelpers[$helper];
+    }
+
+    /**
+     * 
+     */
+    protected function formatHelperName($helper)
+    {
         $namespace = $this->app->getNamespace();
 
         if (!Str::contains($helper, $namespace))
@@ -40,18 +61,6 @@ class HelperManager
             $helper = $namespace.'Helpers\\'.$helper;
         }
 
-        return $this->helper = new $helper($this->app);
-    }
-
-    /**     
-     * Dynamically call the query builder.     
-     *     
-     * @param  string  $method     
-     * @param  array   $parameters     
-     * @return mixed       
-     */        
-    public function __call($method, $parameters)     
-    {
-        return call_user_func_array([$this->helper, $method], $parameters);     
+        return $helper;
     }
 }

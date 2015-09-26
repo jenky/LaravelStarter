@@ -151,7 +151,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\ConfigServiceProvider::class,
-        App\Providers\BladeServiceProvider::class,        
+        App\Providers\BladeServiceProvider::class,
+        App\Providers\HelperServiceProvider::class,   
     ],
 
     /*

@@ -14,7 +14,7 @@ class Html extends AbstractHelper
      * 
      * @return array
      */ 
-    public function getListOptions(array $values, $valueField, $labelField, $labelTemplate = '%s')
+    public function getListOptions($values, $valueField, $labelField, $labelTemplate = '%s')
     {
         $output = array();
 
