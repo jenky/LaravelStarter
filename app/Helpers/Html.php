@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Helpers;
 
 class Html extends AbstractHelper
