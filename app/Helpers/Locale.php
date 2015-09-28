@@ -500,7 +500,7 @@ class Locale extends AbstractHelper
 
         $countries = static::$countries;
 
-        return isset($countries[$code]) ? $countries[$code] : false;
+        return isset($countries[$code]) ? $countries[$code] : null;
     }
 
     public function getCountries()
@@ -514,7 +514,7 @@ class Locale extends AbstractHelper
 
         $dialingCodes = static::$dialingCodes;
 
-        return isset($dialingCodes[$code]) ? $dialingCodes[$code] : false;
+        return isset($dialingCodes[$code]) ? $dialingCodes[$code] : null;
     }
 
     public function getTimezones($group = false)
