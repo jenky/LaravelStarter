@@ -127,9 +127,9 @@ elixir(function(mix) {
 
     .version([
         // JS
-        config.get('public.js.outputFolder') + '/**/*',
+        config.get('public.js.outputFolder'),
         // CSS
-        config.get('public.css.outputFolder') + '/**/*'
+        config.get('public.css.outputFolder')
     ])
 
      /*
