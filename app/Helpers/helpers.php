@@ -123,6 +123,42 @@ if (! function_exists('get_update_rules')) {
     }
 }
 
+if (! function_exists('get_rules')) {
+    /**
+     * Get the validation rules.
+     *
+     * @param  array $rules
+     * @param int|null $id
+     *
+     * @return array
+     */
+    function get_rules(array $rules, $id = null)
+    {
+        foreach ($rules as $field => &$rule) {
+
+            if (! is_array($rule)) {
+                $rule = explode('|', $rule);
+            }
+
+            // This rule will be applied when perform the update.
+            if ($id) {
+                if (! in_array('sometimes', $rule)) {
+                    array_unshift($rule, 'sometimes');
+                }
+
+                // Apply id to the unique rule.
+                foreach ($rule as &$_rule) {
+                    if (str_contains($_rule, 'unique')) {                        
+                        $_rule .= ','.$field.','.$id;
+                    }
+                }
+            }
+        }
+
+        return $rules;
+    }
+}
+
 if (! function_exists('cache_buster')) {
     /**
      * Get the path to a versioned Elixir file.
