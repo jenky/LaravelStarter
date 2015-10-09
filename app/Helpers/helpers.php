@@ -114,7 +114,7 @@ if (! function_exists('get_update_rules')) {
         foreach ($rules as &$rule) {
             if (is_array($rule) && ! in_array('sometimes', $rule)) {
                 array_unshift($rule, 'sometimes');
-            } elseif (is_string($rule) && ! str_contains('sometimes', $rule)) {
+            } elseif (is_string($rule) && ! str_contains($rule, 'sometimes')) {
                 $rule = 'sometimes|'.$rule;
             }
         }
