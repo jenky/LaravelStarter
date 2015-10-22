@@ -139,7 +139,7 @@ elixir(function(mix) {
     */
 
     // .browserSync({
-    //     proxy: 'laravel.local'
+    //     proxy: 'laravel.dev'
     // })
 
      /*
