@@ -11,7 +11,7 @@
 		"doctrine/dbal": "2.*",
 		"jenky/laravel-envloader": "~1.0",
 		"laracasts/flash": "~1.3",
-		"graham-campbell/exceptions": "~4.0"
+		"graham-campbell/exceptions": "~5.0"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",
