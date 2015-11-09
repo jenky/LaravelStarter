@@ -1,11 +1,15 @@
 var elixir = require('laravel-elixir');
 var gulp = require('gulp');
 var config = elixir.config;
+var bowerDir = './bower_components';
 
 function rootPath(path) {
-    return '../../../' + path
+    return '../../../' + path;
 }
 
+function bowerPath(path) {
+    return rootPath(bowerDir + '/' + path);
+}
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -34,11 +38,11 @@ elixir.config.versioning.buildFolder = 'assets';
 var bowerPath = './bower_components';
 var paths = {
     bower: {
-        jquery: bowerPath + '/jquery',
-        respond: bowerPath + '/respond',
-        html5shiv: bowerPath + '/html5shiv',
-        bootstrap: bowerPath + '/bootstrap',
-        fontAwesome: bowerPath + '/font-awesome'
+        jquery: bowerDir + '/jquery',
+        respond: bowerDir + '/respond',
+        html5shiv: bowerDir + '/html5shiv',
+        bootstrap: bowerDir + '/bootstrap',
+        fontAwesome: bowerDir + '/font-awesome'
     },
 
     // build all files in this folder and use this as filename
@@ -73,35 +77,6 @@ elixir(function(mix) {
     cssName += '.css';
 
     mix
-    /*
-     |--------------------------------------------------------------------------
-     | JS
-     |--------------------------------------------------------------------------
-     */
-
-    // Vendor
-    .scripts([
-        rootPath(paths.bower.jquery + '/dist/jquery.js'),
-        rootPath(paths.bower.bootstrap + '/dist/js/bootstrap.js'),
-        'vendor**/*.js'
-    ], config.get('public.js.outputFolder') + '/vendor.js')
-    // jsName || App
-    .scriptsIn(config.get('assets.js.folder') + '/' + paths.prefix, config.get('public.js.outputFolder') + '/' + jsName)
-
-    /*
-     |--------------------------------------------------------------------------
-     | CSS
-     |--------------------------------------------------------------------------
-     */
-
-    // Vendor
-    .styles([
-        rootPath(paths.bower.bootstrap + '/dist/css/bootstrap.css'),
-        rootPath(paths.bower.fontAwesome + '/css/font-awesome.css'),
-        'vendor/**/*.css'
-    ], config.get('public.css.outputFolder') + '/vendor.css')
-    // cssName || App
-    .stylesIn(config.get('assets.css.folder') + '/' + paths.prefix, config.get('public.css.outputFolder') + '/' + cssName)
 
     /*
      |--------------------------------------------------------------------------
@@ -118,6 +93,37 @@ elixir(function(mix) {
      */
 
     // .sass()
+
+    /*
+     |--------------------------------------------------------------------------
+     | JS
+     |--------------------------------------------------------------------------
+     */
+
+    // Vendor
+    .scripts([
+        bowerPath('jquery/dist/jquery.js'),
+        bowerPath('bootstrap/dist/js/bootstrap.js'),
+        bowerPath('bootbox/bootbox.js'),
+        'vendor/**/*.js'
+    ], config.get('public.js.outputFolder') + '/vendor.js')
+    // jsName || App
+    .scriptsIn(config.get('assets.js.folder') + '/' + paths.prefix, config.get('public.js.outputFolder') + '/' + jsName)
+
+    /*
+     |--------------------------------------------------------------------------
+     | CSS
+     |--------------------------------------------------------------------------
+     */
+
+    // Vendor
+    .styles([
+        bowerPath('bootstrap/dist/css/bootstrap.css'),
+        bowerPath('font-awesome/css/font-awesome.css'),
+        'vendor/**/*.css'
+    ], config.get('public.css.outputFolder') + '/vendor.css')
+    // cssName || App
+    .stylesIn(config.get('assets.css.folder') + '/' + paths.prefix, config.get('public.css.outputFolder') + '/' + cssName)
 
      /*
      |--------------------------------------------------------------------------
