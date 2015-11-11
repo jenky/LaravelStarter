@@ -49,10 +49,10 @@ $(function() {
                             if (res.redirect) {
                                 window.location = res.redirect;
                                 return;
-                            }
-
-                            if (res.success) {
+                            } else if (res.success) {
                                 $(remove).empty().remove();
+                            } else {
+                                window.location.reload();
                             }
                         }
                     });
