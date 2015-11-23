@@ -11,12 +11,12 @@ if (! function_exists('array_rewrite')) {
      *
      * @return array
      */
-    function array_rewrite(array $data, $key)
+    function array_rewrite($data, $key)
     {
         $output = [];
 
-        foreach ($data as $_key => $value) {
-            $output[(isset($value[$key])) ? $value[$key] : $_key] = $value;
+        foreach ($data as $k => $value) {
+            $output[(isset($value[$key])) ? $value[$key] : $k] = $value;
         }
 
         return $output;
