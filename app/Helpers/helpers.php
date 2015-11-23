@@ -36,8 +36,8 @@ if (! function_exists('datetime')) {
     {
         $defaultTz = config('app.timezone');
 
-        if (! $timezone && ! empty(Auth::user()->timezone)) {
-            $timezone = Auth::user()->timezone;
+        if (! $timezone && ! empty(auth()->user()->timezone)) {
+            $timezone = auth()->user()->timezone;
         }
 
         if (! in_array($timezone, timezone_identifiers_list())) {
@@ -76,6 +76,7 @@ if (! function_exists('prd')) {
      * Print the passed variables and end the script.
      *
      * @param  mixed
+     *
      * @return void
      */
     function prd()
@@ -94,6 +95,7 @@ if (! function_exists('vd')) {
      * Dump the passed variables using var_dump and end the script.
      *
      * @param  mixed
+     *
      * @return void
      */
     function vd()
@@ -107,6 +109,7 @@ if (! function_exists('get_update_rules')) {
      * Get the validation update rules.
      *
      * @param  array
+     *
      * @return void
      */
     function get_update_rules(array $rules)
@@ -162,7 +165,8 @@ if (! function_exists('cache_buster')) {
     /**
      * Get the path to a versioned Elixir file.
      *
-     * @param  string  $file
+     * @param string $file
+     *
      * @return string
      */
     function cache_buster($file, $prefix = 'assets')
@@ -186,8 +190,9 @@ if (! function_exists('random_filename')) {
      * Generate random filename.
      *
      * @param mixed $file
-     * @param int  $length
+     * @param int   $length
      * @param Closure
+     *
      * @return string
      */
     function random_filename($file, $length = 20, Closure $closure = null)
@@ -208,11 +213,32 @@ if (! function_exists('random_filename')) {
     }
 }
 
+if ( ! function_exists('isset_default')) {
+
+    /**
+     * Get the default value if the variable is not set.
+     */
+    function isset_default($value, $default = null) {
+        return isset($value) ? $value : $default;
+    }
+}
+
+if ( ! function_exists('empty_default')) {
+
+    /**
+     * Get the default value if the variable is not empty.
+     */
+    function empty_default($value, $default = null) {
+        return !empty($value) ? $value : $default;
+    }
+}
+
 if (! function_exists('get_domain')) {
     /**
      * Get the domain name from url.
      * 
      * @param string $url
+     *
      * @return string
      */
     function get_domain($url)
@@ -233,6 +259,7 @@ if (! function_exists('root_domain')) {
      * Replace the subdomain with domain.
      * 
      * @param string $url
+     *
      * @return string
      */
     function root_domain($url)
