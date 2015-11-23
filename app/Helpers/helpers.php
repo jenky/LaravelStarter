@@ -213,23 +213,25 @@ if (! function_exists('random_filename')) {
     }
 }
 
-if ( ! function_exists('isset_default')) {
+if (! function_exists('isset_default')) {
 
     /**
      * Get the default value if the variable is not set.
      */
-    function isset_default($value, $default = null) {
+    function isset_default($value, $default = null)
+    {
         return isset($value) ? $value : $default;
     }
 }
 
-if ( ! function_exists('empty_default')) {
+if (! function_exists('empty_default')) {
 
     /**
      * Get the default value if the variable is not empty.
      */
-    function empty_default($value, $default = null) {
-        return !empty($value) ? $value : $default;
+    function empty_default($value, $default = null)
+    {
+        return ! empty($value) ? $value : $default;
     }
 }
 
