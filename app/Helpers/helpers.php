@@ -1,14 +1,14 @@
 <?php
 
+use Carbon\Carbon;
+
 if (! function_exists('array_rewrite')) {
     /**
      * Replace root array key with child array key.
-     * 
      * Note that the specified key must exist in the query result, or it will be ignored.
      *
-     * @param array|$data
-     * @param string|$key
-     *
+     * @param  array $data
+     * @param  string $key
      * @return array
      */
     function array_rewrite($data, $key)
@@ -27,9 +27,8 @@ if (! function_exists('datetime')) {
     /**
      * Parse datetime with Carbon.
      * 
-     * @param mixed|$time Carbon supported time
-     * @param string|$timezone Output timezone, try to catch from users table if not set
-     * 
+     * @param  mixed|$time Carbon supported time
+     * @param  string|$timezone Output timezone, try to catch from users table if not set
      * @return Carbon
      */
     function datetime($time = null, $timezone = null, $reverse = false)
@@ -45,7 +44,7 @@ if (! function_exists('datetime')) {
         }
 
         if ($timezone) {
-            if ($time instanceof Carbon\Carbon) {
+            if ($time instanceof Carbon) {
                 return $time->tz($timezone);
             }
 
@@ -59,6 +58,12 @@ if (! function_exists('datetime')) {
 }
 
 if (! function_exists('helper')) {
+    /**
+     * Create helper object.
+     * 
+     * @param  string|null $helper
+     * @return mixed
+     */
     function helper($helper = null)
     {
         $helperManager = app('helper');
@@ -75,8 +80,7 @@ if (! function_exists('prd')) {
     /**
      * Print the passed variables and end the script.
      *
-     * @param  mixed
-     *
+     * @param  mixed $x
      * @return void
      */
     function prd()
@@ -94,8 +98,7 @@ if (! function_exists('vd')) {
     /**
      * Dump the passed variables using var_dump and end the script.
      *
-     * @param  mixed
-     *
+     * @param  mixed $x
      * @return void
      */
     function vd()
@@ -108,9 +111,8 @@ if (! function_exists('get_update_rules')) {
     /**
      * Get the validation update rules.
      *
-     * @param  array
-     *
-     * @return void
+     * @param  array $rules
+     * @return array
      */
     function get_update_rules(array $rules)
     {
@@ -131,8 +133,7 @@ if (! function_exists('get_rules')) {
      * Get the validation rules.
      *
      * @param  array $rules
-     * @param int|null $id
-     *
+     * @param  int|null $id
      * @return array
      */
     function get_rules(array $rules, $id = null)
@@ -165,8 +166,7 @@ if (! function_exists('cache_buster')) {
     /**
      * Get the path to a versioned Elixir file.
      *
-     * @param string $file
-     *
+     * @param  string $file
      * @return string
      */
     function cache_buster($file, $prefix = 'assets')
@@ -189,10 +189,9 @@ if (! function_exists('random_filename')) {
     /**
      * Generate random filename.
      *
-     * @param mixed $file
-     * @param int   $length
-     * @param Closure
-     *
+     * @param  mixed $file
+     * @param  int   $length
+     * @param  Closure
      * @return string
      */
     function random_filename($file, $length = 20, Closure $closure = null)
@@ -214,9 +213,12 @@ if (! function_exists('random_filename')) {
 }
 
 if (! function_exists('isset_default')) {
-
     /**
      * Get the default value if the variable is not set.
+     *
+     * @param  mixed $value
+     * @param  mixed|null $default
+     * @return mixed
      */
     function isset_default($value, $default = null)
     {
@@ -225,9 +227,12 @@ if (! function_exists('isset_default')) {
 }
 
 if (! function_exists('empty_default')) {
-
     /**
      * Get the default value if the variable is not empty.
+     *
+     * @param  mixed $value
+     * @param  mixed|null $default
+     * @return mixed
      */
     function empty_default($value, $default = null)
     {
@@ -239,8 +244,7 @@ if (! function_exists('get_domain')) {
     /**
      * Get the domain name from url.
      * 
-     * @param string $url
-     *
+     * @param  string $url
      * @return string
      */
     function get_domain($url)
@@ -260,8 +264,7 @@ if (! function_exists('root_domain')) {
     /**
      * Replace the subdomain with domain.
      * 
-     * @param string $url
-     *
+     * @param  string $url
      * @return string
      */
     function root_domain($url)
