@@ -35,7 +35,6 @@ elixir.config.versioning.buildFolder = 'assets';
  |--------------------------------------------------------------------------
  */
 
-var bowerPath = './bower_components';
 var paths = {
     bower: {
         jquery: bowerDir + '/jquery',
