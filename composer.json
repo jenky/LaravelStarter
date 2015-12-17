@@ -8,7 +8,7 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "laravelcollective/html": "5.1.*",
-        "doctrine/dbal": "2.*",
+        "doctrine/dbal": "~2.4",
         "jenky/laravel-envloader": "~1.0",
         "laracasts/flash": "~1.3",
         "graham-campbell/exceptions": "~5.0",
