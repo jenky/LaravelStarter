@@ -212,34 +212,6 @@ if (! function_exists('random_filename')) {
     }
 }
 
-if (! function_exists('isset_default')) {
-    /**
-     * Get the default value if the variable is not set.
-     *
-     * @param  mixed $value
-     * @param  mixed|null $default
-     * @return mixed
-     */
-    function isset_default($value, $default = null)
-    {
-        return isset($value) ? $value : $default;
-    }
-}
-
-if (! function_exists('empty_default')) {
-    /**
-     * Get the default value if the variable is not empty.
-     *
-     * @param  mixed $value
-     * @param  mixed|null $default
-     * @return mixed
-     */
-    function empty_default($value, $default = null)
-    {
-        return ! empty($value) ? $value : $default;
-    }
-}
-
 if (! function_exists('get_domain')) {
     /**
      * Get the domain name from url.
