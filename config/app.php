@@ -151,7 +151,7 @@ return [
         Jenky\LaravelEnvLoader\EnvLoaderServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
-        // Laracasts\Flash\FlashServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
 
         /*
