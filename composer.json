@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "laravelcollective/html": "dev-master",
+        "laravelcollective/html": "5.2.*",
         "doctrine/dbal": "~2.4",
         "jenky/laravel-envloader": "~1.0",
         "laracasts/flash": "~1.3",
