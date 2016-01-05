@@ -1,28 +1,16 @@
-<!DOCTYPE html>
-<html lang="@yield('htmlLang', 'en')" class="@yield('htmlClass')">
+@extends('layouts.base')
 
-<head>
-    @section('head')
-    <meta charset="@yield('charset', 'utf-8')">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('js')
+{!! Html::script('https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js') !!}
+{!! Html::script('https://maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js') !!}
+@endsection
 
-    @yield('meta')
+@section('css')
+{!! Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css') !!}
+@endsection
 
-    <title>@yield('title')</title>
-
-    @yield('css')
-    
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    @show
-</head>
-
-<body class="@yield('bodyClass')">
-@yield('body')
-@yield('js')
-</body>
-</html>
+@section('body')
+<div class="page-container">
+    @yield('content')
+</div>
+@endsection
