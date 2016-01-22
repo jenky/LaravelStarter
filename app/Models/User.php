@@ -7,12 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     /**
-     * The attributes that are mass unassignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [
-        'id', '_method', '_token',
+    protected $fillable = [
+        'first_name', 'last_name', 'email', 'password',
     ];
 
     /**
