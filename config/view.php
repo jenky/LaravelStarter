@@ -32,11 +32,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Minify Html
+    | Page Title
     |--------------------------------------------------------------------------
     |
-    | This option determines the html output will be minify or not.
+    | Default title that will be used for <title> tag.
     |
     */
-    'minify' => false,
+    'title' => env('APP_TITLE', 'title'),
 ];
