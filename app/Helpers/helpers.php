@@ -248,3 +248,24 @@ if (! function_exists('root_domain')) {
         return str_replace($host, $domain, $url);
     }
 }
+
+if (! function_exists('page_title')) {
+    /**
+     * Set the page title.
+     * 
+     * @param  string $title
+     * @param  string $delimiter
+     * @param  string|null $defaultTitle
+     * @return string
+     */
+    function page_title($title, $delimiter = '|', $defaultTitle = null)
+    {
+        $defaultTitle = $defaultTitle ?: config('view.title');
+
+        if (!$title || $title == $defaultTitle) {
+            return $defaultTitle;
+        }
+
+        return $title.' '.$delimiter.' '.$defaultTitle;
+    }
+}
