@@ -262,7 +262,7 @@ if (! function_exists('page_title')) {
     {
         $defaultTitle = $defaultTitle ?: config('view.title');
 
-        if (!$title || $title == $defaultTitle) {
+        if (! $title || $title == $defaultTitle) {
             return $defaultTitle;
         }
 
