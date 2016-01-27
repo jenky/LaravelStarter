@@ -8,7 +8,7 @@
 
     @yield('meta')
 
-    <title>@yield('title')</title>
+    <title>@yield('title', config('view.title'))</title>
 
     @yield('css')
     
