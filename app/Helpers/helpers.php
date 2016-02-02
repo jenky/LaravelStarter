@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 if (! function_exists('array_rewrite')) {
     /**
@@ -34,10 +35,6 @@ if (! function_exists('datetime')) {
     function datetime($time = null, $timezone = null, $reverse = false)
     {
         $defaultTz = config('app.timezone');
-
-        if (! $timezone && ! empty(auth()->user()->timezone)) {
-            $timezone = auth()->user()->timezone;
-        }
 
         if (! in_array($timezone, timezone_identifiers_list())) {
             $timezone = false;
@@ -196,7 +193,7 @@ if (! function_exists('random_filename')) {
      */
     function random_filename($file, $length = 20, Closure $closure = null)
     {
-        if ($file instanceof Symfony\Component\HttpFoundation\File\UploadedFile) {
+        if ($file instanceof UploadedFile) {
             $extension = $file->getClientOriginalExtension();
         } else {
             $extension = pathinfo($file, PATHINFO_EXTENSION);
