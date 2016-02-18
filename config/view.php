@@ -38,5 +38,6 @@ return [
     | Default title that will be used for <title> tag.
     |
     */
+
     'title' => env('APP_TITLE', 'Title'),
 ];
