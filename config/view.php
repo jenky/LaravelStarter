@@ -30,14 +30,4 @@ return [
 
     'compiled' => realpath(storage_path('framework/views')),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Page Title
-    |--------------------------------------------------------------------------
-    |
-    | Default title that will be used for <title> tag.
-    |
-    */
-
-    'title' => env('APP_TITLE', 'Title'),
 ];
