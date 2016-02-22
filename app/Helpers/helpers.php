@@ -257,7 +257,7 @@ if (! function_exists('page_title')) {
      */
     function page_title($title, $delimiter = '|', $defaultTitle = null)
     {
-        $defaultTitle = $defaultTitle ?: config('view.title');
+        $defaultTitle = $defaultTitle ?: config('app.title');
 
         if (! $title || $title == $defaultTitle) {
             return $defaultTitle;
