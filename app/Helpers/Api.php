@@ -8,7 +8,7 @@ class Api extends Http
 {
     /**
      * List of custom error codes and messages.
-     * 
+     *
      * @var array
      */
     public static $customStatusTexts = [
@@ -17,18 +17,18 @@ class Api extends Http
 
     /**
      * List Errors.
-     * 
+     *
      * @var array
      */
     protected static $errors = [];
 
     /**
      * Respone json errors payload.
-     * 
+     *
      * @param int $code
      * @param string $message
      * @param int $status
-     * 
+     *
      * @return \Response
      */
     public function responseError($code = null, $message = '', $status = 400)
@@ -38,11 +38,11 @@ class Api extends Http
 
     /**
      * Respone json errors payload.
-     * 
+     *
      * @param array $errors
      * @param string $message
      * @param int $status
-     * 
+     *
      * @return \Response
      */
     public function responseErrors(array $errors, $status = 400)
@@ -52,10 +52,10 @@ class Api extends Http
 
     /**
      * Get error message based on http error codes and custom error codes.
-     * 
+     *
      * @param int $code
      * @param string $message
-     * 
+     *
      * @return array
      */
     public function getErrorMessage($code, $message = '')
@@ -72,10 +72,10 @@ class Api extends Http
 
     /**
      * Set error code and message.
-     * 
+     *
      * @param int $code
      * @param string $message
-     * 
+     *
      * @return App\Helpers\Api
      */
     public function error($code, $message = '')
@@ -87,9 +87,9 @@ class Api extends Http
 
     /**
      * Set error codes and messages.
-     * 
+     *
      * @param array $errors
-     * 
+     *
      * @return App\Helpers\Api
      */
     public function errors($errors)
@@ -101,7 +101,7 @@ class Api extends Http
 
     /**
      * Determine if the error list is empty or not.
-     * 
+     *
      * @return bool
      */
     public function hasErrors()
@@ -111,7 +111,7 @@ class Api extends Http
 
     /**
      * Allias of hasErrors().
-     * 
+     *
      * @return bool
      */
     public function hasError()
@@ -121,7 +121,7 @@ class Api extends Http
 
     /**
      * Get Errors.
-     * 
+     *
      * @return array
      */
     public function getErrors()
@@ -131,9 +131,9 @@ class Api extends Http
 
     /**
      * Respone json errors payload.
-     * 
+     *
      * @param int $status
-     * 
+     *
      * @return \Response
      */
     public function response($status = 400, array $headers = [], $options = 0)

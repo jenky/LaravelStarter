@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class UserRepository implements Contract
 {
-    /** 
+    /**
      * @var \Illuminate\Database\Eloquent\Model
      */
     protected $model;
@@ -23,7 +23,7 @@ class UserRepository implements Contract
 
     /**
      * Create a new user.
-     * 
+     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Auth\Authenticatable
      */
@@ -39,7 +39,7 @@ class UserRepository implements Contract
 
     /**
      * Update an user.
-     * 
+     *
      * @param  int $id
      * @param  array $data
      * @return \Illuminate\Contracts\Auth\Authenticatable

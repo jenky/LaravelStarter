@@ -729,7 +729,7 @@ class AcceptanceTester extends \Codeception\Actor
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
-     * Checks that the given input field or textarea contains the given value. 
+     * Checks that the given input field or textarea contains the given value.
      * For fuzzy locators, fields are matched by label text, the "name" attribute, CSS, and XPath.
      *
      * ``` php
@@ -756,7 +756,7 @@ class AcceptanceTester extends \Codeception\Actor
     /**
      * [!] Method is generated. Documentation taken from corresponding module.
      *
-     * Checks that the given input field or textarea contains the given value. 
+     * Checks that the given input field or textarea contains the given value.
      * For fuzzy locators, fields are matched by label text, the "name" attribute, CSS, and XPath.
      *
      * ``` php
@@ -846,7 +846,7 @@ class AcceptanceTester extends \Codeception\Actor
      * in the request with the last parameter as an alternative to
      * explicitly setting its value in the second parameter, as
      * button values are not otherwise included in the request.
-     * 
+     *
      * Examples:
      *
      * ``` php
@@ -877,13 +877,13 @@ class AcceptanceTester extends \Codeception\Actor
      *
      * ```
      * Note that "2" will be the submitted value for the "plan" field, as it is the selected option.
-     * 
+     *
      * You can also emulate a JavaScript submission by not specifying any buttons in the third parameter to submitForm.
-     * 
+     *
      * ```php
      * <?php
      * $I->submitForm('#userForm', array('user' => array('login' => 'Davert', 'password' => '123456', 'agree' => true)));
-     * 
+     *
      * ```
      *
      * @param $selector
@@ -1388,7 +1388,7 @@ class AcceptanceTester extends \Codeception\Actor
      * [!] Method is generated. Documentation taken from corresponding module.
      *
      * Checks that there are a certain number of elements matched by the given locator on the page.
-     * 
+     *
      * ``` php
      * <?php
      * $I->seeNumberOfElements('tr', 10);
@@ -1411,7 +1411,7 @@ class AcceptanceTester extends \Codeception\Actor
      * [!] Method is generated. Documentation taken from corresponding module.
      *
      * Checks that there are a certain number of elements matched by the given locator on the page.
-     * 
+     *
      * ``` php
      * <?php
      * $I->seeNumberOfElements('tr', 10);

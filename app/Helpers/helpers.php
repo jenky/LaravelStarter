@@ -27,7 +27,7 @@ if (! function_exists('array_rewrite')) {
 if (! function_exists('datetime')) {
     /**
      * Parse datetime with Carbon.
-     * 
+     *
      * @param  mixed|$time Carbon supported time
      * @param  string|$timezone Output timezone, try to catch from users table if not set
      * @return Carbon
@@ -57,7 +57,7 @@ if (! function_exists('datetime')) {
 if (! function_exists('helper')) {
     /**
      * Create helper object.
-     * 
+     *
      * @param  string|null $helper
      * @return mixed
      */
@@ -212,7 +212,7 @@ if (! function_exists('random_filename')) {
 if (! function_exists('get_domain')) {
     /**
      * Get the domain name from url.
-     * 
+     *
      * @param  string $url
      * @return string
      */
@@ -232,7 +232,7 @@ if (! function_exists('get_domain')) {
 if (! function_exists('root_domain')) {
     /**
      * Replace the subdomain with domain.
-     * 
+     *
      * @param  string $url
      * @return string
      */
@@ -249,7 +249,7 @@ if (! function_exists('root_domain')) {
 if (! function_exists('page_title')) {
     /**
      * Set the page title.
-     * 
+     *
      * @param  string $title
      * @param  string $delimiter
      * @param  string|null $defaultTitle

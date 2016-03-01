@@ -13,9 +13,9 @@ abstract class AbstractHelper
 
     /**
      * Class constructor.
-     * 
+     *
      * @param \Illuminate\Contracts\Foundation\Application $app
-     * 
+     *
      * @return void
      */
     public function __construct(Application $app)

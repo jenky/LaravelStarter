@@ -8,7 +8,7 @@ interface UserRepository
 {
     /**
      * Create a new user.
-     * 
+     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Auth\Authenticatable
      */
@@ -16,7 +16,7 @@ interface UserRepository
 
     /**
      * Update an user.
-     * 
+     *
      * @param  int $id
      * @param  array $data
      * @return \Illuminate\Contracts\Auth\Authenticatable

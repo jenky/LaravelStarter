@@ -8,9 +8,9 @@ use Illuminate\Support\ServiceProvider;
 
 class ContractServiceProvider extends ServiceProvider
 {
-    /** 
+    /**
      * The application's contracts.
-     * 
+     *
      * @var array
      */
     protected $services = [
