@@ -14,14 +14,14 @@ class HelperManager
 
     /**
      * Helper instance.
-     * 
+     *
      * @var object
      */
     protected $helper;
 
     /**
      * Loaded helers.
-     * 
+     *
      * @var array
      */
     protected $loadedHelpers = [];
@@ -33,9 +33,9 @@ class HelperManager
 
     /**
      * Create new helper instance.
-     * 
+     *
      * @param mixed $helper
-     * 
+     *
      * @return void
      */
     public function make($helper)
@@ -49,9 +49,6 @@ class HelperManager
         return $this->loadedHelpers[$helper];
     }
 
-    /**
-     * 
-     */
     protected function formatHelperName($helper)
     {
         $namespace = $this->app->getNamespace();

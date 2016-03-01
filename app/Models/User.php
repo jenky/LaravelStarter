@@ -26,7 +26,7 @@ class User extends Authenticatable
 
     /**
      * Validaction rules.
-     * 
+     *
      * @var array
      */
     public static $rules = [
