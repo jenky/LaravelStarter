@@ -1,0 +1,39 @@
+// Available in Bootstrap 4
+
+@each $size, $value in $font-sizes {
+  .font-size-#{$size} { font-size: $value; }
+}
+
+.font-weight-normal {
+  font-weight: normal;
+}
+.font-weight-bold {
+  font-weight: bold;
+}
+.font-italic {
+  font-style: italic;
+}
+
+.text-lowercase {
+  text-transform: lowercase !important;
+}
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+.text-capitalize {
+  text-transform: capitalize !important;
+}
+
+// ********* //
+
+.text-underline {
+  text-decoration: underline;
+}
+.text-no-decoration {
+  text-decoration: none !important;
+}
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
