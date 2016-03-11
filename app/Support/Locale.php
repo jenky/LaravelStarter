@@ -6,9 +6,9 @@ use DateTimeZone;
 
 class Locale
 {
-    /** 
+    /**
      * Friendly day.
-     * 
+     *
      * @var array
      */
     public static $days = [
@@ -21,9 +21,9 @@ class Locale
         'Saturday',
     ];
 
-    /** 
+    /**
      * List Countries.
-     * 
+     *
      * @var array
      */
     public static $countries = [
@@ -189,7 +189,7 @@ class Locale
         ],
         'MM' => [
             'code' => 'MM',
-            'name' => 'Burma Myanmar' ,
+            'name' => 'Burma Myanmar',
             'calling_code' => '+95',
         ],
         'BI' => [
@@ -264,7 +264,7 @@ class Locale
         ],
         'CI' => [
             'code' => 'CI',
-            'name' => 'Côte d\'Ivoire' ,
+            'name' => 'Côte d\'Ivoire',
             'calling_code' => '+225',
         ],
         'HR' => [
@@ -859,7 +859,7 @@ class Locale
         ],
         'RE' => [
             'code' => 'RE',
-            'name' => 'Réunion' ,
+            'name' => 'Réunion',
             'calling_code' => '+262',
         ],
         'RO' => [
@@ -879,7 +879,7 @@ class Locale
         ],
         'BL' => [
             'code' => 'BL',
-            'name' => 'Saint Barthélemy' ,
+            'name' => 'Saint Barthélemy',
             'calling_code' => '+590',
         ],
         'SH' => [
@@ -919,7 +919,7 @@ class Locale
         ],
         'ST' => [
             'code' => 'ST',
-            'name' => 'São Tomé and Príncipe' ,
+            'name' => 'São Tomé and Príncipe',
             'calling_code' => '+239',
         ],
         'SA' => [
@@ -1199,13 +1199,13 @@ class Locale
     public static function getCountry($code, $subKey = 'name', $default = null)
     {
         $code = strtoupper($code);
-        $key = !is_null($subKey) ? $code.'.'.$subKey : $code;
+        $key = ! is_null($subKey) ? $code.'.'.$subKey : $code;
 
         return array_get(static::$countries, $key, $default);
     }
 
     /**
-     * Get timezone list
+     * Get timezone list.
      *
      * @param  bool $group
      * @return array
