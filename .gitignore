@@ -3,6 +3,8 @@
 /bower_components
 /public/storage
 /public/docs
+Homestead.yaml
+Homestead.json
 .env
 _ide_helper.php
 /storage/testing.sqlite
