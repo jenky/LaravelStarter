@@ -266,3 +266,19 @@ if (! function_exists('page_title')) {
         return $title.' '.$delimiter.' '.$defaultTitle;
     }
 }
+
+if (! function_exists('active_route')) {
+    /**
+     * Return the "active" class if current route is matched.
+     *
+     * @param  string|array $route
+     * @param  string $output
+     * @return string|null
+     */
+    function active_route($route, $output = 'active')
+    {
+        if (Route::is($route)) {
+            return $output;
+        }
+    }
+}
