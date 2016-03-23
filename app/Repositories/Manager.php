@@ -45,7 +45,7 @@ abstract class Manager
     /**
      * Attach the request data too the model.
      *
-     * @param  Request $request
+     * @param  \Illuminate\Http\Request $request
      * @param  int|null $id
      * @return \Illuminate\Database\Eloquent\Model
      */
