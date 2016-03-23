@@ -23,7 +23,7 @@ abstract class Manager
      * Set the model.
      *
      * @param  \Illuminate\Database\Eloquent\Model
-     * @return mixed
+     * @return $this
      */
     public function setModel($model)
     {
