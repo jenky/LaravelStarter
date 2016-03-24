@@ -1194,6 +1194,7 @@ class Locale
      *
      * @param  string $code
      * @param  string|null $subKey
+     * @param  mixed|null $default
      * @return mixed
      */
     public static function getCountry($code, $subKey = 'name', $default = null)
