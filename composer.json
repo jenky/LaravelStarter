@@ -30,7 +30,7 @@
             "database"
         ],
         "files": [
-            "app/Support/helpers.php"            
+            "app/Support/helpers.php"
         ],
         "psr-4": {
             "App\\": "app/"
@@ -43,11 +43,11 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "php artisan clear-compiled",
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize"
         ],
         "post-update-cmd": [
-            "php artisan clear-compiled",
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
         ],
         "post-root-package-install": [
