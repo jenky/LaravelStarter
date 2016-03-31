@@ -159,29 +159,6 @@ if (! function_exists('get_rules')) {
     }
 }
 
-if (! function_exists('cache_buster')) {
-    /**
-     * Get the path to a versioned Elixir file.
-     *
-     * @param  string $file
-     * @return string
-     */
-    function cache_buster($file, $prefix = 'assets')
-    {
-        static $manifest = null;
-
-        if (is_null($manifest)) {
-            $manifest = json_decode(file_get_contents(public_path($prefix).'/rev-manifest.json'), true);
-        }
-
-        if (isset($manifest[$file])) {
-            return $prefix.'/'.$manifest[$file];
-        }
-
-        throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
-    }
-}
-
 if (! function_exists('random_filename')) {
     /**
      * Generate random filename.
