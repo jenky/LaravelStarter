@@ -5,6 +5,7 @@ return [
     'admin'                         => 'Admin',
     'dashboard'                     => 'Dashboard',
     'name'                          => 'Name',
+    'username'                      => 'Username',
     'title'                         => 'Title',
     'description'                   => 'Description',
     'password'                      => 'Password',
@@ -42,4 +43,6 @@ return [
     'help'                          => 'Help',
     'terms'                         => 'Terms of services',
     'privacy_policy'                => 'Privacy Policy',
+    'front_page'                    => 'Front Page',
+
 ];
