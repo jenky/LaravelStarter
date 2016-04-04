@@ -3,7 +3,7 @@
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-if (! function_exists('array_rewrite')) {
+if (! function_exists('array_key_by')) {
     /**
      * Replace root array key with child array key.
      * Note that the specified key must exist in the query result, or it will be ignored.
@@ -12,7 +12,7 @@ if (! function_exists('array_rewrite')) {
      * @param  string $key
      * @return array
      */
-    function array_rewrite($data, $key)
+    function array_key_by($data, $key)
     {
         $output = [];
 
