@@ -5,7 +5,24 @@ namespace App\Support;
 class Currency
 {
     /**
+     * @var string
+     */
+    const FORMAT_CODE = 'code';
+
+    /**
+     * @var string
+     */
+    const FORMAT_SYMBOL = 'symbol';
+
+    /**
      * @var array
+     * @param code string
+     * @param name string
+     * @param symbol string
+     * @param string thousands_separator
+     * @param string decimal_point
+     * @param int decimal_length
+     * @param string position: before, after, before_space, after_space
      */
     public static $currencies = [
         'USD' => [
@@ -15,6 +32,7 @@ class Currency
             'thousands_separator' => ',',
             'decimal_point'       => '.',
             'decimal_length'      => 2,
+            'position'            => 'before',
         ],
         'VND' => [
             'code'                => 'VND',
@@ -23,6 +41,7 @@ class Currency
             'thousands_separator' => ' ',
             'decimal_point'       => '.',
             'decimal_length'      => 0,
+            'position'            => 'after_space',
         ],
     ];
 
@@ -71,5 +90,41 @@ class Currency
         }
 
         return number_format($amount, $currency['decimal_length'], $currency['decimal_point'], $currency['thousands_separator']);
+    }
+
+    /**
+     * Display formatted currency.
+     *
+     * @param  int|float $amount
+     * @param  string $currency
+     * @param  string $format
+     * @return string
+     */
+    public static function display($amount, $currency, $format = 'symbol')
+    {
+        $amount = static::format($amount, $currency);
+        $currency = static::getCurrency($currency);
+        $format = in_array($format, [static::FORMAT_CODE, static::FORMAT_SYMBOL])
+            ? $currency[$format]
+            : $currency[static::FORMAT_SYMBOL];
+
+        switch ($currency['position']) {
+            case 'before':
+            default:
+                return sprintf('%s%s', $format, $amount);
+                break;
+
+            case 'after':
+                return sprintf('%s%s', $amount, $format);
+                break;
+
+            case 'before_space':
+                return sprintf('%s %s', $format, $amount);
+                break;
+
+            case 'after_space':
+                return sprintf('%s %s', $amount, $format);
+                break;
+        }
     }
 }
