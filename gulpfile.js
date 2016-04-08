@@ -1,5 +1,6 @@
 var elixir = require('laravel-elixir');
 var gulp = require('gulp');
+var del = require('del');
 var config = elixir.config;
 var bowerDir = './bower_components';
 
@@ -10,6 +11,12 @@ function rootPath(path) {
 function bowerPath(path) {
     return rootPath(bowerDir + '/' + path);
 }
+
+elixir.extend('remove', function(path) {
+    new elixir.Task('remove', function() {
+        del(path);
+    });
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -108,8 +115,11 @@ elixir(function(mix) {
         bowerPath('bootbox/bootbox.js'),
         'vendor/**/*.js'
     ], config.get('public.js.outputFolder') + '/vendor.js')
-    // jsName || App
-    .scriptsIn(config.get('assets.js.folder') + '/' + paths.prefix, config.get('public.js.outputFolder') + '/' + jsName)
+    // app.js
+    // .scripts([
+
+    // ], config.get('assets.js.folder') + '/app/all.js')
+    .scriptsIn(config.get('assets.js.folder') + '/app', config.get('public.js.outputFolder') + '/app.js')
 
     /*
     |--------------------------------------------------------------------------
@@ -123,8 +133,11 @@ elixir(function(mix) {
         bowerPath('font-awesome/css/font-awesome.css'),
         'vendor/**/*.css'
     ], config.get('public.css.outputFolder') + '/vendor.css')
-    // cssName || App
-    .stylesIn(config.get('assets.css.folder') + '/' + paths.prefix, config.get('public.css.outputFolder') + '/' + cssName)
+    // app.css
+    // .styles([
+
+    // ], config.get('assets.css.folder') + '/app/theme.css')
+    .stylesIn(config.get('assets.css.folder') + '/app', config.get('public.css.outputFolder') + '/app.css')
 
     /*
     |--------------------------------------------------------------------------
