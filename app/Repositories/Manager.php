@@ -15,9 +15,10 @@ abstract class Manager
      * Handle the request.
      *
      * @param  \Illuminate\Http\Request $request
+     * @param  array $data
      * @return void
      */
-    abstract protected function handle(Request $request);
+    abstract protected function handle(Request $request, array $data = []);
 
     /**
      * Set the model.
@@ -47,15 +48,16 @@ abstract class Manager
      *
      * @param  \Illuminate\Http\Request $request
      * @param  int|null $id
+     * @param  array $data
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function attach(Request $request, $id = null)
+    public function attach(Request $request, $id = null, array $data = [])
     {
         if (is_numeric($id)) {
             $this->model = $this->model->findOrFail($id);
         }
 
-        $this->handle($request);
+        $this->handle($request, $data);
 
         return $this->model;
     }
