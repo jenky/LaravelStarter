@@ -12,7 +12,7 @@ if (! function_exists('array_key_by')) {
      * @param  string $key
      * @return array
      */
-    function array_key_by($data, $key)
+    function array_key_by(array $data, $key)
     {
         $output = [];
 
@@ -54,25 +54,6 @@ if (! function_exists('datetime')) {
     }
 }
 
-if (! function_exists('helper')) {
-    /**
-     * Create helper object.
-     *
-     * @param  string|null $helper
-     * @return mixed
-     */
-    function helper($helper = null)
-    {
-        $helperManager = app('helper');
-
-        if (is_null($helper)) {
-            return $helperManager;
-        }
-
-        return $helperManager->make($helper);
-    }
-}
-
 if (! function_exists('prd')) {
     /**
      * Print the passed variables and end the script.
@@ -101,27 +82,6 @@ if (! function_exists('vd')) {
     function vd()
     {
         array_map(function ($x) { var_dump($x); die; }, func_get_args());
-    }
-}
-
-if (! function_exists('get_update_rules')) {
-    /**
-     * Get the validation update rules.
-     *
-     * @param  array $rules
-     * @return array
-     */
-    function get_update_rules(array $rules)
-    {
-        foreach ($rules as &$rule) {
-            if (is_array($rule) && ! in_array('sometimes', $rule)) {
-                array_unshift($rule, 'sometimes');
-            } elseif (is_string($rule) && ! str_contains($rule, 'sometimes')) {
-                $rule = 'sometimes|'.$rule;
-            }
-        }
-
-        return $rules;
     }
 }
 
