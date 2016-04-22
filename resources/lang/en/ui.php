@@ -54,6 +54,7 @@ return [
     'sign_in'                       => 'Sign in',
     'sign_out'                      => 'Sign out',
     'sign_up'                       => 'Sign up',
+    'success'                       => 'Success',
     'submit'                        => 'Submit',
     'support'                       => 'Support',
     'terms'                         => 'Terms of services',
