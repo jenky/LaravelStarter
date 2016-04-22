@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'previous' => '&laquo; Previous',
-    'next'     => 'Next &raquo;',
+    'previous'                      => '&laquo; Previous',
+    'next'                          => 'Next &raquo;',
+    'showing_item_from_to_of_total' => 'Showing :item :from to :to of :total',
+    'showing_x_of_total_item'       => 'Showing :x of :total :item',
 
 ];

@@ -49,8 +49,6 @@ return [
     'save'                          => 'Save',
     'save_changes'                  => 'Save Changes',
     'show'                          => 'Show',
-    'showing_item_from_to_of_total' => 'Showing :item :from to :to of :total',
-    'showing_x_of_total_item'       => 'Showing :x of :total :item',
     'sign_in'                       => 'Sign in',
     'sign_out'                      => 'Sign out',
     'sign_up'                       => 'Sign up',
