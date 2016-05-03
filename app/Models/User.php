@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -25,14 +25,13 @@ class User extends Authenticatable
     ];
 
     /**
-     * Validaction rules.
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        'first_name' => 'required|min:2',
-        'last_name'  => 'required|min:2',
-        'email'      => 'required|email',
-        'password'   => 'required|min:6',
+        'name'     => 'required|min:2',
+        'email'    => 'required|email',
+        'password' => 'required|min:6',
     ];
 }
