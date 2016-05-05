@@ -214,8 +214,14 @@ if (! function_exists('active_route')) {
      */
     function active_route($route, $output = 'active')
     {
-        if (Route::is($route)) {
-            return $output;
+        if (is_array($route)) {
+            if (call_user_func_array('Route::is', $route)) {
+                return $output;
+            }
+        } else {
+            if (Route::is($route)) {
+                return $output;
+            }
         }
     }
 }
