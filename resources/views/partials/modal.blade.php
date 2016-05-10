@@ -12,10 +12,10 @@
                     @yield('modal-body')
                 </div>
                 <div class="modal-footer">
+                    @yield('modal-footer')
                     @if (!empty($modalClose))
                         <button class="btn {{ $modalCloseBtn or 'btn-default' }}" data-dismiss="modal" type="button">{{ trans('ui.close') }}</button>
                     @endif
-                    @yield('modal-footer')
                 </div>
             @show
         </div>
