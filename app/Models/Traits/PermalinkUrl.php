@@ -30,7 +30,7 @@ trait PermalinkUrl
     }
 
     /**
-     * Find resouce by slug or id.
+     * Find resource by slug or id.
      *
      * @param  string|int $value
      * @param  string|null $key
@@ -48,7 +48,7 @@ trait PermalinkUrl
     }
 
     /**
-     * Find resouce by slug or id and throws
+     * Find resource by slug or id and throws
      * exception if the result is empty.
      *
      * @param  string|int $value
