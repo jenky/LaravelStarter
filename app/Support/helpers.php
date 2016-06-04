@@ -81,7 +81,10 @@ if (! function_exists('vd')) {
      */
     function vd()
     {
-        array_map(function ($x) { var_dump($x); die; }, func_get_args());
+        array_map(function ($x) {
+            var_dump($x);
+            die;
+        }, func_get_args());
     }
 }
 
