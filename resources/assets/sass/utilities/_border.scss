@@ -20,11 +20,9 @@
 
 .b-a-ra { border-radius: $border-radius; }
 @each $size in (1, 2, 3, 4) {
-  @if $size == 1 {
-    $sizeText: '';
-  } @else {
+  $sizeText: '';
+  @if $size != 1 {
     $sizeText: -#{$size}x;
-
     .b-w#{$sizeText} { border-width: $border-width * $size !important }
   }
 
