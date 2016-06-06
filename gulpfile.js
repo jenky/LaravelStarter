@@ -75,11 +75,6 @@ gulp.task('fonts', function () {
 
 elixir(function(mix) {
 
-    var jsName = paths.prefix || 'app',
-        cssName = paths.prefix || 'app';
-    jsName += '.js';
-    cssName += '.css';
-
     mix
 
     /*
