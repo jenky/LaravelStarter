@@ -30,7 +30,7 @@ trait SelectOption
     {
         $output = is_array($default) ? $default : [];
 
-        $this->list = array_merge($output, $options);
+        $this->list = $output + $options;
 
         return $this;
     }
