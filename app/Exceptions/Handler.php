@@ -3,11 +3,12 @@
 namespace App\Exceptions;
 
 use Exception;
+use GrahamCampbell\Exceptions\ExceptionHandler;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Validation\ValidationException;
-use GrahamCampbell\Exceptions\ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 // use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -22,6 +23,7 @@ class Handler extends ExceptionHandler
         AuthorizationException::class,
         HttpException::class,
         ModelNotFoundException::class,
+        TokenMismatchException::class,
         ValidationException::class,
     ];
 
