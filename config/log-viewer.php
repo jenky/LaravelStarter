@@ -8,10 +8,20 @@ return [
     'storage-path'  => storage_path('logs'),
 
     /* ------------------------------------------------------------------------------------------------
+     |  Log files pattern
+     | ------------------------------------------------------------------------------------------------
+     */
+    'pattern'       => [
+        'prefix'    => \Arcanedev\LogViewer\Contracts\FilesystemInterface::PATTERN_PREFIX,
+        'date'      => \Arcanedev\LogViewer\Contracts\FilesystemInterface::PATTERN_DATE,
+        'extension' => \Arcanedev\LogViewer\Contracts\FilesystemInterface::PATTERN_EXTENSION,
+    ],
+
+    /* ------------------------------------------------------------------------------------------------
      |  Locale
      | ------------------------------------------------------------------------------------------------
      |  Supported locales :
-     |    'auto', 'ar', 'de', 'en', 'es', 'fr', 'hy', 'it', 'nl', 'ro', 'ru', 'sv', 'tr', 'zh'
+     |    'auto', 'ar', 'de', 'en', 'es', 'fa', 'fr', 'hy', 'it', 'nl', 'pl', 'pt-BR', 'ro', 'ru', 'sv', 'th', 'tr', 'zh-TW', 'zh'
      */
     'locale'        => 'auto',
 
@@ -67,7 +77,7 @@ return [
      | ------------------------------------------------------------------------------------------------
      */
     'icons' =>  [
-        /*
+        /**
          * Font awesome >= 4.3
          * http://fontawesome.io/icons/
          */
