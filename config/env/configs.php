@@ -7,9 +7,11 @@
  */
 
 return [
+
     'local' => [
         // 'app' => [
-        // 	'url' => 'http://mylocaldomain',
+        // 	'url' => 'http://my-app.dev',
         // ],
     ],
+
 ];

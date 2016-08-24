@@ -1,4 +1,7 @@
-var elixir = require('laravel-elixir');
+const elixir = require('laravel-elixir');
+
+require('laravel-elixir-vue');
+
 var gulp = require('gulp');
 var del = require('del');
 var config = elixir.config;
@@ -39,30 +42,14 @@ elixir.config.versioning.buildFolder = 'assets';
 
 /*
 |--------------------------------------------------------------------------
-| Paths
-|--------------------------------------------------------------------------
-*/
-
-var paths = {
-    bower: {
-        bootstrap: bowerDir + '/bootstrap',
-        fontAwesome: bowerDir + '/font-awesome'
-    },
-
-    // build all files in this folder and use this as filename
-    prefix: '' //
-};
-
-/*
-|--------------------------------------------------------------------------
 | Fonts
 |--------------------------------------------------------------------------
 */
 
 gulp.task('fonts', function () {
     gulp.src([
-        paths.bower.bootstrap + '/fonts/*.*',
-        paths.bower.fontAwesome + '/fonts/*-webfont.*'
+        bowerDir + '/bootstrap/fonts/*.*',
+        bowerDir + '/font-awesome/fonts/*-webfont.*'
     ])
     .pipe(gulp.dest(config.get('public.versioning.buildFolder') + '/fonts'));
 });

@@ -7,7 +7,9 @@
  */
 
 return [
+
     'local' => [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
+
 ];

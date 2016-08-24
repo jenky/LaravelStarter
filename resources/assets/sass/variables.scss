@@ -1,0 +1,86 @@
+
+// Body
+$body-bg: #f5f8fa;
+
+// Borders
+$laravel-border-color: darken($body-bg, 10%);
+$list-group-border: $laravel-border-color;
+$navbar-default-border: $laravel-border-color;
+$panel-default-border: $laravel-border-color;
+$panel-inner-border: $laravel-border-color;
+
+// Brands
+$brand-primary: #3097D1;
+$brand-info: #8eb4cb;
+$brand-success: #2ab27b;
+$brand-warning: #cbb956;
+$brand-danger:  #bf5329;
+
+// Typography
+$font-family-sans-serif: "Raleway", sans-serif;
+$font-size-base: 14px;
+$line-height-base: 1.6;
+$text-color: #636b6f;
+
+// Navbar
+$navbar-default-bg: #fff;
+
+// Buttons
+$btn-default-color: $text-color;
+
+// Inputs
+$input-border: lighten($text-color, 40%);
+$input-border-focus: lighten($brand-primary, 25%);
+$input-color-placeholder: lighten($text-color, 30%);
+
+// Panels
+$panel-default-heading-bg: #fff;
+
+$spacer:   5px !default;
+$spacer-x: $spacer !default;
+$spacer-y: $spacer !default;
+$spacers: (
+  none: (
+    x: 0,
+    y: 0
+  ),
+  xs: (
+    x: $spacer-x,
+    y: $spacer-x
+  ),
+  sm: (
+    x: $spacer-x * 2,
+    y: $spacer-y * 2
+  ),
+  md: (
+    x: ($spacer-x * 3),
+    y: ($spacer-y * 3)
+  ),
+  lg: (
+    x: ($spacer-x * 4),
+    y: ($spacer-y * 4)
+  ),
+  xl: (
+    x: ($spacer-x * 6),
+    y: ($spacer-y * 6)
+  )
+) !default;
+
+$font-size-base:   12px;
+$font-sizes: (
+  xs: $font-size-base * 2 / 3,
+  sm: $font-size-base * 5 / 6,
+  lg: $font-size-base * 1.5,
+  xl: $font-size-base * 2
+);
+
+$border-width: 1px;
+$border-color: #eaeef1;
+
+$border-radius:  2px;
+$border-radius-corners: (
+  t: $border-radius,
+  r: $border-radius,
+  b: $border-radius,
+  l: $border-radius
+)

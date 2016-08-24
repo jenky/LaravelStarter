@@ -1,10 +1,10 @@
-/vendor
 /node_modules
 /bower_components
 /public/storage
+/vendor
+/.idea
 /public/docs
 Homestead.yaml
 Homestead.json
 .env
-_ide_helper.php
 /storage/testing.sqlite
