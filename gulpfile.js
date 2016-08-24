@@ -80,6 +80,7 @@ elixir(function(mix) {
     |--------------------------------------------------------------------------
     */
 
+    .sass('vendor.scss')
     // .sass([
     //     'app.scss'
     // ], 'resources/assets/css')
@@ -90,18 +91,21 @@ elixir(function(mix) {
     |--------------------------------------------------------------------------
     */
 
-    // Vendor
-    .scripts([
-        bowerPath('jquery/dist/jquery.js'),
-        bowerPath('bootstrap/dist/js/bootstrap.js'),
-        bowerPath('bootbox/bootbox.js'),
-        'vendor/**/*.js'
-    ], config.get('public.js.outputFolder') + '/vendor.js')
-    // app.js
-    // .scripts([
+    .webpack('vendor.js')
+    .webpack('app.js')
 
-    // ], config.get('assets.js.folder') + '/app/all.js')
-    .scriptsIn(config.get('assets.js.folder') + '/app', config.get('public.js.outputFolder') + '/app.js')
+    // Vendor
+    // .scripts([
+    //     bowerPath('jquery/dist/jquery.js'),
+    //     bowerPath('bootstrap/dist/js/bootstrap.js'),
+    //     bowerPath('bootbox/bootbox.js'),
+    //     'vendor/**/*.js'
+    // ], config.get('public.js.outputFolder') + '/vendor.js')
+    // // app.js
+    // // .scripts([
+
+    // // ], config.get('assets.js.folder') + '/app/all.js')
+    // .scriptsIn(config.get('assets.js.folder') + '/app', config.get('public.js.outputFolder') + '/app.js')
 
     /*
     |--------------------------------------------------------------------------
@@ -110,16 +114,16 @@ elixir(function(mix) {
     */
 
     // Vendor
-    .styles([
-        bowerPath('bootstrap/dist/css/bootstrap.css'),
-        bowerPath('font-awesome/css/font-awesome.css'),
-        'vendor/**/*.css'
-    ], config.get('public.css.outputFolder') + '/vendor.css')
-    // app.css
     // .styles([
+    //     bowerPath('bootstrap/dist/css/bootstrap.css'),
+    //     bowerPath('font-awesome/css/font-awesome.css'),
+    //     'vendor/**/*.css'
+    // ], config.get('public.css.outputFolder') + '/vendor.css')
+    // // app.css
+    // // .styles([
 
-    // ], config.get('assets.css.folder') + '/app/theme.css')
-    .stylesIn(config.get('assets.css.folder') + '/app', config.get('public.css.outputFolder') + '/app.css')
+    // // ], config.get('assets.css.folder') + '/app/theme.css')
+    // .stylesIn(config.get('assets.css.folder') + '/app', config.get('public.css.outputFolder') + '/app.css')
 
     /*
     |--------------------------------------------------------------------------
