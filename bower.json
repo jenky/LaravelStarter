@@ -1,9 +1,9 @@
 {
-  "name": "laravel-skeleton",
-  "version": "2.0",
+  "name": "laravel-starter",
+  "version": "5.3",
   "dependencies": {
-    "jquery": "latest",
-    "bootstrap": "latest",    
+    "jquery": "^2.0",
+    "bootstrap": "^3.3",
     "font-awesome": "latest",
     "bootbox": "makeusabrew/bootbox"
   }
