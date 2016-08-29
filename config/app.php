@@ -166,7 +166,7 @@ return [
          * Package Service Providers...
          */
         Jenky\LaravelEnvLoader\EnvLoaderServiceProvider::class,
-        // Collective\Html\HtmlServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
@@ -229,9 +229,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        // 'Form' => Collective\Html\FormFacade::class,
-        // 'Html' => Collective\Html\HtmlFacade::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
         'Carbon' => Carbon\Carbon::class,
+
     ],
 
 ];
