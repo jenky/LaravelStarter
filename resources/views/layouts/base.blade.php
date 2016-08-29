@@ -21,6 +21,6 @@
 </head>
 <body class="@yield('bodyClass')">
 @yield('body')
-@yield('js')
 </body>
+@yield('js')
 </html>
