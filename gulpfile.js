@@ -1,11 +1,10 @@
 const elixir = require('laravel-elixir');
+const gulp = require('gulp');
+const del = require('del');
+let config = elixir.config;
+const bowerDir = './bower_components';
 
 require('laravel-elixir-vue');
-
-var gulp = require('gulp');
-var del = require('del');
-var config = elixir.config;
-var bowerDir = './bower_components';
 
 function rootPath(path) {
     return '../../../' + path;
