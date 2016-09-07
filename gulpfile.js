@@ -1,7 +1,7 @@
 const elixir = require('laravel-elixir');
 const gulp = require('gulp');
 const del = require('del');
-let config = elixir.config;
+const config = elixir.config;
 const bowerDir = './bower_components';
 
 require('laravel-elixir-vue');
