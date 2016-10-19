@@ -4,7 +4,7 @@ const del = require('del');
 const config = elixir.config;
 const bowerDir = './bower_components';
 
-require('laravel-elixir-vue');
+require('laravel-elixir-vue-2');
 
 function rootPath(path) {
     return '../../../' + path;
@@ -27,7 +27,7 @@ elixir.extend('remove', function(path) {
 |
 | Elixir provides a clean, fluent API for defining some basic Gulp tasks
 | for your Laravel application. By default, we are compiling the Sass
-| file for our application, as well as publishing vendor resources.
+| file for your application as well as publishing vendor resources.
 |
 */
 
