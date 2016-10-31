@@ -59,7 +59,7 @@ gulp.task('fonts', function () {
 |--------------------------------------------------------------------------
 */
 
-elixir(function(mix) {
+elixir((mix) => {
 
     mix
 
