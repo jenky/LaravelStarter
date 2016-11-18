@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "prod": "gulp --production",
-    "dev": "gulp watch"
+    "dev": "gulp watch",
+    "apidoc": "apidoc -i docs -o public/docs"
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
