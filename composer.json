@@ -12,7 +12,9 @@
         "jenky/laravel-envloader": "^1.1",
         "laracasts/flash": "^2.0",
         "graham-campbell/exceptions": "^9.0",
-        "arcanedev/log-viewer": "^4.1"
+        "arcanedev/log-viewer": "^4.1",
+        "barryvdh/laravel-cors": "^0.8.2",
+        "jenky/laravel-api-helper": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
