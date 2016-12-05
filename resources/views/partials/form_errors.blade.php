@@ -2,8 +2,7 @@
     <?php
         $list = '<ul>';
 
-        foreach ($errors->all() as $error)
-        {
+        foreach ($errors->all() as $error) {
             $list .= '<li>' . $error . '</li>';
         }
 
