@@ -9,3 +9,4 @@ Homestead.yaml
 Homestead.json
 .env
 /storage/testing.sqlite
+.php_cs.cache
