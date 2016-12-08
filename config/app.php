@@ -172,6 +172,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
         Jenky\LaravelApiHelper\ApiServiceProvider::class,
+        Jenky\LaravelAPI\ApiServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
 
         /*
