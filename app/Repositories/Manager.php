@@ -40,7 +40,7 @@ abstract class Manager
      */
     public function getModel()
     {
-        return $this->model;
+        return $this->model->fresh();
     }
 
     /**
