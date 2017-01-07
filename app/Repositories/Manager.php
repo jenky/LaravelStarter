@@ -36,11 +36,12 @@ abstract class Manager
     /**
      * Get the model.
      *
+     * @param  bool $fresh
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function getModel()
+    public function getModel($fresh = false)
     {
-        return $this->model->fresh();
+        return $fresh ? $this->model->fresh() : $this->model;
     }
 
     /**
