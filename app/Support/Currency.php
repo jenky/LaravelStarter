@@ -38,7 +38,7 @@ class Currency
             'code'                => 'VND',
             'name'                => 'Vietnam Dong',
             'symbol'              => 'đ',
-            'thousands_separator' => ' ',
+            'thousands_separator' => '.',
             'decimal_point'       => '.',
             'decimal_length'      => 0,
             'position'            => 'after_space',
