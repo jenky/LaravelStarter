@@ -1,12 +1,11 @@
 
 /**
  * First we will load all of this project's JavaScript dependencies which
- * include Vue and Vue Resource. This gives a great starting point for
+ * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-// Nope, let require this in vendor.js.
-// require('./bootstrap');
+require('./bootstrap');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
