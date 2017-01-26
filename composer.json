@@ -13,6 +13,8 @@
         "laracasts/flash": "^2.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0"
+        "barryvdh/laravel-cors": "^0.8.2",
+        "jenky/laravel-api": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
