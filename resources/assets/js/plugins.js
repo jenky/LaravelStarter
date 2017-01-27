@@ -4,6 +4,7 @@ $(function() {
 
     // popover
     $("[data-toggle=popover]").popover();
+
     $(document).on('click', '.popover-title .close', function (e) {
         var $target = $(e.target),
             $popover = $target.closest('.popover').prev();
@@ -11,7 +12,7 @@ $(function() {
     });
 
     // ajax modal
-    $(document).on('click', '[data-toggle="ajaxModal"], .ajax-modal ', function (e) {
+    $(document).on('click', '[data-toggle="ajax-modal"]', function (e) {
         e.preventDefault();
         $('#ajaxModal').remove();
 
@@ -31,16 +32,14 @@ $(function() {
         $(this).closest('.modal-dialog').find('form').submit();
     });
 
-    // ajax delete
-    $(document).on('click', '.ajax-remove', function(e) {
+    $(document).on('click', '[data-toggle="dialog-confirm"]', function(e) {
         e.preventDefault();
 
         var $this = $(this),
             url = $this.attr('href') || false,
             method = $this.data('method') || 'DELETE',
             message = $this.data('message') || 'Are you sure?',
-            params = $this.data('params') || {},
-            remove = $this.data('remove') || false;
+            params = $this.data('params') || {};
 
         if (url) {
             bootbox.confirm(message, function(result) {
@@ -53,9 +52,6 @@ $(function() {
                         success: function(res) {
                             if (res.redirect) {
                                 window.location = res.redirect;
-                                return;
-                            } else if (res.success) {
-                                $(remove).empty().remove();
                             } else {
                                 window.location.reload();
                             }
