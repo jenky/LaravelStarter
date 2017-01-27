@@ -9,7 +9,6 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
         <!-- Styles -->
         <style>
@@ -92,28 +91,5 @@
                 </div>
             </div>
         </div>
-
-        @include('partials.errors', ['dismissible' => true])
-
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-            Launch demo modal
-        </button>
-
-        @component('partials.modal', ['id' => 'myModal'])
-            @slot('title', 'Hello World')
-            @slot('footer')
-                <button class="btn btn-primary modal-form-submit">{{ __('ui.submit') }}</button>
-                <button class="btn btn-warning" data-dismiss="modal">{{ __('ui.close') }}</button>
-            @endslot
-
-            <form method="GET">
-                {!! csrf_field() !!}
-
-                <input type="text" name="name" class="form-control">
-            </form>
-        @endcomponent
     </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="{{ mix('/js/plugins.js') }}"></script>
 </html>
