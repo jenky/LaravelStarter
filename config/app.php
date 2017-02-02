@@ -168,7 +168,7 @@ return [
          */
         Jenky\LaravelEnvLoader\EnvLoaderServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
-        // Collective\Html\HtmlServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
@@ -234,8 +234,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        // 'Form' => Collective\Html\FormFacade::class,
-        // 'Html' => Collective\Html\HtmlFacade::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 
