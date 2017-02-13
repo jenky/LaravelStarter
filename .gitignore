@@ -1,13 +1,11 @@
 /node_modules
-/bower_components
 /public/storage
 /public/hot
+/public/docs
 /storage/*.key
 /vendor
 /.idea
-/public/docs
 Homestead.yaml
 Homestead.json
 .env
-/storage/testing.sqlite
 .php_cs.cache
