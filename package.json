@@ -8,11 +8,11 @@
     "apidoc": "apidoc -i docs -o public/docs"
   },
   "devDependencies": {
-    "axios": "^0.15.2",
+    "axios": "^0.15.3",
     "bootstrap-sass": "^3.3.7",
-    "jquery": "^3.1.0",
-    "laravel-mix": "^0.6.0",
-    "lodash": "^4.16.2",
-    "vue": "^2.0.1"
+    "jquery": "^3.1.1",
+    "laravel-mix": "^0.7.2",
+    "lodash": "^4.17.4",
+    "vue": "^2.1.10"
   }
 }
