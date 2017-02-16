@@ -2,6 +2,8 @@
 
 namespace App\Support;
 
+use InvalidArgumentException;
+
 class Currency
 {
     /**
@@ -15,37 +17,6 @@ class Currency
     const FORMAT_SYMBOL = 'symbol';
 
     /**
-     * @var array
-     * @param code string
-     * @param name string
-     * @param symbol string
-     * @param string thousands_separator
-     * @param string decimal_point
-     * @param int decimal_length
-     * @param string position: before, after, before_space, after_space
-     */
-    public static $currencies = [
-        'USD' => [
-            'code'                => 'USD',
-            'name'                => 'U.S Dollar',
-            'symbol'              => '$',
-            'thousands_separator' => ',',
-            'decimal_point'       => '.',
-            'decimal_length'      => 2,
-            'position'            => 'before',
-        ],
-        'VND' => [
-            'code'                => 'VND',
-            'name'                => 'Vietnam Dong',
-            'symbol'              => 'đ',
-            'thousands_separator' => '.',
-            'decimal_point'       => '.',
-            'decimal_length'      => 0,
-            'position'            => 'after_space',
-        ],
-    ];
-
-    /**
      * Get currency by it's 3 letter ISO code.
      *
      * @param  string $currency
@@ -53,40 +24,35 @@ class Currency
      * @param  mixed|null $default
      * @return mixed
      */
-    public static function getCurrency($currency, $subKey = null, $default = null)
+    public static function get($currency, $subKey = null, $default = null)
     {
         $currency = strtoupper($currency);
         $key = ! is_null($subKey) ? $currency.'.'.$subKey : $currency;
 
-        return array_get(static::$currencies, $key, $default);
+        return array_get(static::all(), $key, $default);
     }
 
     /**
-     * Add a new currency.
+     * Get all currencies.
      *
-     * @param  array $currency
-     * @return void
+     * @return array
      */
-    public static function addCurrency(array $currency)
+    public static function all()
     {
-        if (! isset($currency['name'])) {
-            return;
-        }
-
-        static::$currencies[$currency['name']] = $currency;
+        return require base_path('resources/locales/currencies.php');
     }
 
     /**
      * Format amount with specific currency.
      *
      * @param  int|float $amount
-     * @param  string $currency
+     * @param  string $code
      * @return string
      */
-    public static function format($amount, $currency)
+    public static function format($amount, $code)
     {
-        if (! $currency = static::getCurrency($currency)) {
-            throw new InvalidArgumentException("`{$currency}` is not supported!");
+        if (! $currency = static::get($code)) {
+            throw new InvalidArgumentException("`{$code}` is not supported!");
         }
 
         return number_format($amount, $currency['decimal_length'], $currency['decimal_point'], $currency['thousands_separator']);
@@ -103,7 +69,7 @@ class Currency
     public static function display($amount, $currency, $format = 'symbol')
     {
         $amount = static::format($amount, $currency);
-        $currency = static::getCurrency($currency);
+        $currency = static::get($currency);
         $format = in_array($format, [static::FORMAT_CODE, static::FORMAT_SYMBOL])
             ? $currency[$format]
             : $currency[static::FORMAT_SYMBOL];
