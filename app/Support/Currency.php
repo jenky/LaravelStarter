@@ -47,13 +47,16 @@ class Currency
      *
      * @param  int|float $amount
      * @param  string $code
+     * @param  array $options
      * @return string
      */
-    public static function format($amount, $code)
+    public static function format($amount, $code, array $options = [])
     {
         if (! $currency = static::get($code)) {
             throw new InvalidArgumentException("`{$code}` is not supported!");
         }
+
+        $currency = array_merge($currency, $options);
 
         return number_format($amount, $currency['decimal_length'], $currency['decimal_point'], $currency['thousands_separator']);
     }
@@ -63,34 +66,20 @@ class Currency
      *
      * @param  int|float $amount
      * @param  string $currency
-     * @param  string $format
+     * @param  array $options
      * @return string
      */
-    public static function display($amount, $currency, $format = 'symbol')
+    public static function display($amount, $currency, array $options = [])
     {
-        $amount = static::format($amount, $currency);
-        $currency = static::get($currency);
-        $format = in_array($format, [static::FORMAT_CODE, static::FORMAT_SYMBOL])
-            ? $currency[$format]
-            : $currency[static::FORMAT_SYMBOL];
+        $amount = static::format($amount, $currency, $options);
+        $currency = array_merge(static::get($currency), $options);
+        $format = array_get($currency, 'format', '{value} {code}');
+        $replaces = [
+            '{value}' => $amount,
+            '{code}' => array_get($currency, 'code'),
+            '{symbol}' => array_get($currency, 'symbol'),
+        ];
 
-        switch ($currency['position']) {
-            case 'before':
-            default:
-                return sprintf('%s%s', $format, $amount);
-                break;
-
-            case 'after':
-                return sprintf('%s%s', $amount, $format);
-                break;
-
-            case 'before_space':
-                return sprintf('%s %s', $format, $amount);
-                break;
-
-            case 'after_space':
-                return sprintf('%s %s', $amount, $format);
-                break;
-        }
+        return str_replace(array_keys($replaces), array_values($replaces), $format);
     }
 }
