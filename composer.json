@@ -10,7 +10,7 @@
         "barryvdh/laravel-cors": "^0.8.5",
         "doctrine/dbal": "^2.5",
         "graham-campbell/exceptions": "^9.3",
-        "jenky/laravel-api": "^1.0",
+        "jenky/laravel-api": "^2.0",
         "jenky/laravel-envloader": "^1.1",
         "laracasts/flash": "^2.0",
         "laravel/framework": "5.4.*",
