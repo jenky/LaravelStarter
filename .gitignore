@@ -5,6 +5,7 @@
 /storage/*.key
 /vendor
 /.idea
+/.vagrant
 Homestead.yaml
 Homestead.json
 .env
