@@ -171,7 +171,6 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
-        Barryvdh\Cors\ServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
 
         /*
