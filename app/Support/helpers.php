@@ -28,29 +28,23 @@ if (! function_exists('datetime')) {
     /**
      * Parse datetime with Carbon.
      *
-     * @param  mixed|$time Carbon supported time
-     * @param  string|$timezone Output timezone, try to catch from users table if not set
-     * @return Carbon
+     * @param  mixed $time
+     * @param  string $timezone
+     * @param  bool $reverse
+     * @return \Carbon\Carbon
      */
     function datetime($time = null, $timezone = null, $reverse = false)
     {
-        $defaultTz = config('app.timezone');
+        $timezone = in_array($timezone, timezone_identifiers_list()) ? $timezone : null;
 
-        if (! in_array($timezone, timezone_identifiers_list())) {
-            $timezone = false;
+        if (is_array($time)) {
+            list($time, $format) = $time;
+            $datetime = Carbon::createFromFormat($format, $time, $timezone);
+        } else {
+            $datetime = Carbon::parse($time, $timezone);
         }
 
-        if ($timezone) {
-            if ($time instanceof Carbon) {
-                return $time->tz($timezone);
-            }
-
-            return $reverse
-                ? Carbon::parse($time, $timezone)->tz($defaultTz)
-                : Carbon::parse($time, $defaultTz)->tz($timezone);
-        }
-
-        return Carbon::parse($time, $defaultTz);
+        return $reverse ? $datetime->tz(config('app.timezone', 'UTC')) : $datetime;
     }
 }
 
