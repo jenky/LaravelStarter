@@ -82,47 +82,13 @@ if (! function_exists('vd')) {
     }
 }
 
-if (! function_exists('get_rules')) {
-    /**
-     * Get the validation rules.
-     *
-     * @param  array $rules
-     * @param  int|null $id
-     * @return array
-     */
-    function get_rules(array $rules, $id = null)
-    {
-        foreach ($rules as $field => &$rule) {
-            if (! is_array($rule)) {
-                $rule = explode('|', $rule);
-            }
-
-            // This rule will be applied when perform the update.
-            if ($id) {
-                if (! in_array('sometimes', $rule)) {
-                    array_unshift($rule, 'sometimes');
-                }
-
-                // Apply id to the unique rule.
-                foreach ($rule as &$_rule) {
-                    if (str_contains($_rule, 'unique')) {
-                        $_rule .= ','.$field.','.$id;
-                    }
-                }
-            }
-        }
-
-        return $rules;
-    }
-}
-
 if (! function_exists('random_filename')) {
     /**
      * Generate random filename.
      *
      * @param  mixed $file
-     * @param  int   $length
-     * @param  Closure
+     * @param  int $length
+     * @param  Closure|null
      * @return string
      */
     function random_filename($file, $length = 20, Closure $closure = null)
@@ -140,43 +106,6 @@ if (! function_exists('random_filename')) {
         }
 
         return $name.'.'.$extension;
-    }
-}
-
-if (! function_exists('get_domain')) {
-    /**
-     * Get the domain name from url.
-     *
-     * @param  string $url
-     * @return string
-     */
-    function get_domain($url)
-    {
-        $pieces = parse_url($url);
-        $domain = isset($pieces['host']) ? $pieces['host'] : '';
-
-        if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
-            return $regs['domain'];
-        }
-
-        return false;
-    }
-}
-
-if (! function_exists('root_domain')) {
-    /**
-     * Replace the subdomain with domain.
-     *
-     * @param  string $url
-     * @return string
-     */
-    function root_domain($url)
-    {
-        $pieces = parse_url($url);
-        $host = isset($pieces['host']) ? $pieces['host'] : '';
-        $domain = get_domain($url);
-
-        return str_replace($host, $domain, $url);
     }
 }
 
