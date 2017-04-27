@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="@yield('htmlLang', config('app.locale'))" class="@yield('htmlClass')">
 <head>
     @section('head')
