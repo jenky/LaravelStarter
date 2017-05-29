@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.master')
 
 @section('js')
 {!! Html::script('https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js') !!}
