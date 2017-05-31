@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="@yield('htmlLang', config('app.locale'))" class="@yield('htmlClass')">
+<!DOCTYPE html>
+<html lang="@yield('htmlLang', app()->getLocale())" class="@yield('htmlClass')">
 <head>
     @section('head')
     <meta charset="@yield('charset', 'utf-8')">
