@@ -44,6 +44,17 @@ trait TransformerScopes
     }
 
     /**
+     * Set transformer scopes.
+     *
+     * @param  string|array $scopes
+     * @return $this
+     */
+    public function scopes($scopes)
+    {
+        return $this->setScope($scopes);
+    }
+
+    /**
      * Run the transformer scopes.
      *
      * @param  mixed $resource
