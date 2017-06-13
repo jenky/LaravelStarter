@@ -10,7 +10,7 @@
         "doctrine/dbal": "^2.5",
         "graham-campbell/exceptions": "^9.3",
         "jenky/laravel-envloader": "^1.1",
-        "laracasts/flash": "^2.0",
+        "laracasts/flash": "^3.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "5.4.*"
