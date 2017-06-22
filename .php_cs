@@ -9,8 +9,7 @@ $finder = PhpCsFixer\Finder::create()
     ->name('*.php')
     ->notName('*.blade.php')
     ->ignoreDotFiles(true)
-    ->ignoreVCS(true)
-;
+    ->ignoreVCS(true);
 
 return PhpCsFixer\Config::create()
     ->setCacheFile(__DIR__.'/.php_cs.cache')
@@ -35,5 +34,4 @@ return PhpCsFixer\Config::create()
         'single_blank_line_before_namespace' => true,
         'ternary_operator_spaces' => true,
     ))
-    ->setFinder($finder)
-;
+    ->setFinder($finder);
