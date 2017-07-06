@@ -9,5 +9,6 @@
 Homestead.yaml
 Homestead.json
 npm-debug.log
+yarn-error.log
 .env
 .php_cs.cache
