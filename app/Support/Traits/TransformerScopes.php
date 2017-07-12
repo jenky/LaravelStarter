@@ -65,14 +65,14 @@ trait TransformerScopes
         $scopes = $this->getTransformerScopes();
         $class = get_class($resource);
 
+        if (method_exists($this, 'scopeDefault')) {
+            $resource = $this->scopeDefault($resource);
+        }
+
         if (is_array($scopes)) {
             foreach ($scopes as $scope) {
                 $resource = $this->callTransformerScope($scope, $resource);
             }
-        }
-
-        if (method_exists($this, 'scopeDefault')) {
-            $resource = $this->scopeDefault($resource);
         }
 
         if (! $resource instanceof $class) {
