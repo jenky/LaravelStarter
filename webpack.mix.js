@@ -16,4 +16,10 @@ mix.js('resources/assets/js/app.js', 'public/js')
   .autoload({
     jquery: ['$', 'window.jQuery', 'jQuery', 'jquery'],
   })
-  .sass('resources/assets/sass/app.scss', 'public/css');
+  .sass('resources/assets/sass/app.scss', 'public/css')
+
+if (mix.inProduction()) {
+  mix.version()
+} else {
+  mix.sourceMaps()
+}
