@@ -1,4 +1,6 @@
 {
+  "name": "Laravel",
+  "version": "1.0.0",
   "title": "Laravel API documentation",
   "url": "http://laravel.dev/api",
   "sampleUrl": "http://laravel.dev/api",
