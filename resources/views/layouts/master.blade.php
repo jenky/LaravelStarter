@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="@yield('htmlLang', app()->getLocale())" class="@yield('htmlClass')">
 <head>
     @section('head')
     <meta charset="@yield('charset', 'utf-8')">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @yield('meta')
@@ -21,7 +21,7 @@
     @show
 </head>
 <body class="@yield('bodyClass')">
-@yield('body')
+    @yield('body')
+    @yield('js')
 </body>
-@yield('js')
 </html>
