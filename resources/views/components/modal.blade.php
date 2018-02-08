@@ -2,7 +2,7 @@
     <div class="modal-dialog {{ $size or '' }}">
         <div class="modal-content">
             <div class="modal-header">
-                <button aria-label="{{ trans('ui.close') }}" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                <button aria-label="{{ __('ui.close') }}" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">{!! $title or '' !!}</h4>
             </div>
             <div class="modal-body">
