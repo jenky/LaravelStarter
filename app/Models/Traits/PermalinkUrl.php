@@ -50,12 +50,13 @@ trait PermalinkUrl
      * Find resource by slug or id and throws
      * exception if the result is empty.
      *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
      * @param  string|int $value
      * @param  string|null $key
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function scopeFindBySlugOrFail($value, $key = null)
+    public function scopeFindBySlugOrFail($query, $value, $key = null)
     {
         if (is_numeric($value)) {
             return $this->findOrFail($value);
