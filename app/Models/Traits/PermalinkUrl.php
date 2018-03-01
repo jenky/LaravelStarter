@@ -32,19 +32,18 @@ trait PermalinkUrl
     /**
      * Find resource by slug or id.
      *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
      * @param  string|int $value
      * @param  string|null $key
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function findBySlug($value, $key = null)
+    public function scopeFindBySlug($query, $value, $key = null)
     {
         if (is_numeric($value)) {
             return $this->find($value);
         }
 
-        $key = $key ?: $this->getSlugKey();
-
-        return $this->where($key, '=', $value)->first();
+        return $this->scopeBySlug($query, $slug, $key)->first();
     }
 
     /**
@@ -56,15 +55,13 @@ trait PermalinkUrl
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function findBySlugOrFail($value, $key = null)
+    public function scopeFindBySlugOrFail($value, $key = null)
     {
         if (is_numeric($value)) {
             return $this->findOrFail($value);
         }
 
-        $key = $key ?: $this->getSlugKey();
-
-        return $this->where($key, '=', $value)->firstOrFail();
+        return $this->scopeBySlug($query, $slug, $key)->firstOrFail();
     }
 
     /**
