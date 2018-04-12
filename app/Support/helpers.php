@@ -89,7 +89,7 @@ if (! function_exists('page_title')) {
             return $defaultTitle;
         }
 
-        return $title.' '.$delimiter.' '.$defaultTitle;
+        return sprintf('%s %s %s', $title, $delimiter, $defaultTitle);
     }
 }
 
