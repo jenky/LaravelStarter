@@ -18,14 +18,19 @@ class ProfileJsonResponse
     {
         $response = $next($request);
 
+        if (! app()->bound('debugbar')) {
+            return $response;
+        }
+
+        $debugbar = app('debugbar');
+
         if ($request->has('_debugbar') &&
+            $debugbar->isEnabled() &&
             $response instanceof JsonResponse &&
-            app()->bound('debugbar') &&
-            app('debugbar')->isEnabled() &&
             is_object($response->getData())
         ) {
             $response->setData($response->getData(true) + [
-                '_debugbar' => app('debugbar')->getData(),
+                '_debugbar' => $debugbar->getData(),
             ]);
         }
 
