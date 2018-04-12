@@ -48,40 +48,6 @@ if (! function_exists('datetime')) {
     }
 }
 
-if (! function_exists('prd')) {
-    /**
-     * Print the passed variables and end the script.
-     *
-     * @param  mixed $x
-     * @return void
-     */
-    function prd()
-    {
-        array_map(function ($x) {
-            echo '<pre>';
-            print_r($x);
-            echo '</pre>';
-        }, func_get_args());
-        die;
-    }
-}
-
-if (! function_exists('vd')) {
-    /**
-     * Dump the passed variables using var_dump and end the script.
-     *
-     * @param  mixed $x
-     * @return void
-     */
-    function vd()
-    {
-        array_map(function ($x) {
-            var_dump($x);
-            die;
-        }, func_get_args());
-    }
-}
-
 if (! function_exists('random_filename')) {
     /**
      * Generate random filename.
