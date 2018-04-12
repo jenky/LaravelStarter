@@ -29,22 +29,19 @@ if (! function_exists('datetime')) {
      * Parse datetime with Carbon.
      *
      * @param  mixed $time
-     * @param  string $timezone
-     * @param  bool $reverse
+     * @param  mixed $tz
      * @return \Carbon\Carbon
      */
-    function datetime($time = null, $timezone = null, $reverse = false)
+    function datetime($time = null, $tz = null)
     {
-        $timezone = in_array($timezone, timezone_identifiers_list()) ? $timezone : null;
-
         if (is_array($time)) {
             list($time, $format) = $time;
-            $datetime = Carbon::createFromFormat($format, $time, $timezone);
+            $datetime = Carbon::createFromFormat($format, $time, $tz);
         } else {
-            $datetime = Carbon::parse($time, $timezone);
+            $datetime = Carbon::parse($time, $tz);
         }
 
-        return $reverse ? $datetime->tz(config('app.timezone', 'UTC')) : $datetime;
+        return $datetime;
     }
 }
 
