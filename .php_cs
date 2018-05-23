@@ -1,11 +1,12 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    ->exclude('bootstrap/cache')
-    ->exclude('storage')
-    ->exclude('vendor')
-    ->exclude('tests')
-    ->exclude('public')
+    ->exclude([
+        'bootstrap/cache',
+        'storage',
+        'vendor',
+        'public',
+    ])
     ->in(__DIR__)
     ->name('*.php')
     ->notName('*.blade.php')
@@ -14,7 +15,7 @@ $finder = PhpCsFixer\Finder::create()
 
 return PhpCsFixer\Config::create()
     ->setCacheFile(__DIR__.'/.php_cs.cache')
-    ->setRules(array(
+    ->setRules([
         '@PSR2' => true,
         'array_indentation' => true,
         'blank_line_after_opening_tag' => true,
@@ -72,5 +73,5 @@ return PhpCsFixer\Config::create()
         'trim_array_spaces' => true,
         'unary_operator_spaces' => true,
         'whitespace_after_comma_in_array' => true,
-    ))
+    ])
     ->setFinder($finder);
