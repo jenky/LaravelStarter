@@ -1,4 +1,4 @@
-let mix = require('laravel-mix')
+const mix = require('laravel-mix')
 
 /*
  |--------------------------------------------------------------------------
@@ -11,13 +11,13 @@ let mix = require('laravel-mix')
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
+mix.js('resources/js/app.js', 'public/js')
   .extract(['jquery', 'bootstrap', 'vue', 'axios'])
   .autoload({
     jquery: ['$', 'window.jQuery', 'jQuery', 'jquery'],
   })
-  .sass('resources/assets/sass/vendor.scss', 'public/css')
-  .sass('resources/assets/sass/app.scss', 'public/css')
+  .sass('resources/sass/vendor.scss', 'public/css')
+  .sass('resources/sass/app.scss', 'public/css')
 
 if (mix.inProduction()) {
   mix.version()

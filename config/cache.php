@@ -40,7 +40,7 @@ return [
 
         'database' => [
             'driver' => 'database',
-            'table'  => 'cache',
+            'table' => 'cache',
             'connection' => null,
         ],
 
@@ -70,7 +70,7 @@ return [
 
         'redis' => [
             'driver' => 'redis',
-            'connection' => 'default',
+            'connection' => 'cache',
         ],
 
     ],
