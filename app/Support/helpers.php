@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 if (! function_exists('array_key_by')) {
@@ -29,13 +30,13 @@ if (! function_exists('datetime')) {
      * Parse datetime with Carbon.
      *
      * @param  mixed $time
-     * @param  mixed $tz
+     * @param  \DateTimeZone|string|null $tz
      * @return \Carbon\Carbon
      */
     function datetime($time = null, $tz = null)
     {
         if (is_array($time)) {
-            list($time, $format) = $time;
+            [$format, $time] = $time;
             $datetime = Carbon::createFromFormat($format, $time, $tz);
         } else {
             $datetime = Carbon::parse($time, $tz);
@@ -51,7 +52,7 @@ if (! function_exists('random_filename')) {
      *
      * @param  mixed $file
      * @param  int $length
-     * @param  Closure|null
+     * @param  \Closure|null
      * @return string
      */
     function random_filename($file, $length = 20, Closure $closure = null)
