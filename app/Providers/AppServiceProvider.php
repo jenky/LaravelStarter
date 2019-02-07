@@ -8,6 +8,16 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
      * Bootstrap any application services.
      *
      * @return void
@@ -18,15 +28,5 @@ class AppServiceProvider extends ServiceProvider
         // Blade::component('components.alert', 'alert');
         // Blade::component('components.errors', 'errors');
         // Blade::component('components.modal', 'modal');
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
     }
 }
