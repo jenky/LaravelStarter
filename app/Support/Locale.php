@@ -3,57 +3,52 @@
 namespace App\Support;
 
 use DateTimeZone;
+use Illuminate\Support\Str;
 
 class Locale
 {
-    /**
-     * Friendly day.
-     *
-     * @var array
-     */
-    public static $days = [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-    ];
+    const AFRICA = 'Africa';
+    const AMERICA = 'America';
+    const ANTARCTICA = 'Antarctica';
+    const ARCTIC = 'Arctic';
+    const ASIA = 'Asia';
+    const ATLANTIC = 'Atlantic';
+    const AUSTRALIA = 'Australia';
+    const EUROPE = 'Europe';
+    const INDIAN = 'Indian';
+    const PACIFIC = 'Pacific';
+
+    const General = 'General';
 
     /**
-     * Get country by it's 2 letter code.
-     *
-     * @param  string $code
-     * @param  string|null $subKey
-     * @param  mixed|null $default
-     * @return mixed
-     */
-    public static function country($code, $subKey = null, $default = null)
-    {
-        $code = strtoupper($code);
-        $key = ! is_null($subKey) ? $code.'.'.$subKey : $code;
-
-        return array_get(static::countries(), $key, $default);
-    }
-
-    /**
-     * Get all countries.
+     * Get all the world's continents.
      *
      * @return array
      */
-    public static function countries()
+    public static function continents()
     {
-        return require base_path('resources/locales/countries.php');
+        // Todo: support translation
+
+        return [
+            static::AFRICA,
+            static::ANTARCTICA,
+            static::ARCTIC,
+            static::ASIA,
+            static::ATLANTIC,
+            static::AUSTRALIA,
+            static::EUROPE,
+            static::INDIAN,
+            static::PACIFIC,
+        ];
     }
 
     /**
-     * Get timezone list.
+     * Get all the world's timezones.
      *
      * @param  bool $group
      * @return array
      */
-    public static function getTimezones($group = false)
+    public static function timezones($group = false)
     {
         $output = [];
 
@@ -61,23 +56,24 @@ class Locale
 
         foreach ($tzlist as $timezone) {
             if ($group) {
-                $zone = explode('/', $timezone); // 0 => Continent, 1 => City
+                if (Str::contains($timezone, '/')) {
+                    [$continent, $city] = explode('/', $timezone);
 
-                // Only use "friendly" continent names
-                $continents = [
-                    'Africa', 'America', 'Antarctica',
-                    'Arctic', 'Asia', 'Atlantic', 'Australia',
-                    'Europe', 'Indian', 'Pacific',
-                ];
-
-                if (in_array($zone[0], $continents)) {
-                    if (isset($zone[1]) != '') {
-                        $output[$zone[0]][$zone[0].'/'.$zone[1]] = str_replace('_', ' ', $zone[1]); // Creates array(DateTimeZone => 'Friendly name')
+                    if (in_array($continent, static::continents())
+                        && ! empty($city)) {
+                        $output[$continent][$timezone] = str_replace('_', ' ', $city); // Creates array(DateTimeZone => 'Friendly name')
                     }
+                } else {
+                    $output[static::General][$timezone] = $timezone;
                 }
             } else {
                 $output[$timezone] = $timezone;
             }
+        }
+
+        if ($group) {
+            // Move General group to the beginning of the array
+            $output = [static::General => $output[static::General]] + $output;
         }
 
         return $output;
