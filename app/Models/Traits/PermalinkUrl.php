@@ -43,7 +43,7 @@ trait PermalinkUrl
             return $this->find($value);
         }
 
-        return $this->scopeBySlug($query, $slug, $key)->first();
+        return $this->scopeBySlug($query, $value, $key)->first();
     }
 
     /**
@@ -62,7 +62,7 @@ trait PermalinkUrl
             return $this->findOrFail($value);
         }
 
-        return $this->scopeBySlug($query, $slug, $key)->firstOrFail();
+        return $this->scopeBySlug($query, $value, $key)->firstOrFail();
     }
 
     /**
