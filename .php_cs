@@ -33,6 +33,7 @@ return PhpCsFixer\Config::create()
         'lowercase_static_reference' => true,
         'magic_constant_casing' => true,
         'magic_method_casing' => true,
+        'method_argument_space' => ['keep_multiple_spaces_after_comma' => false, 'on_multiline' => 'ignore'],
         'method_chaining_indentation' => true,
         'multiline_comment_opening_closing' => true,
         'multiline_whitespace_before_semicolons' => true,
