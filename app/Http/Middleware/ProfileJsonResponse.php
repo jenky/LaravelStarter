@@ -3,10 +3,27 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\JsonResponse;
 
 class ProfileJsonResponse
 {
+    /**
+     * @var \Illuminate\Contracts\Foundation\Application
+     */
+    protected $app;
+
+    /**
+     * Create new middleware instance.
+     *
+     * @param  \Illuminate\Contracts\Foundation\Application $app
+     * @return void
+     */
+    public function __construct(Application $app)
+    {
+        $this->app = $app;
+    }
+
     /**
      * Handle an incoming request.
      *
@@ -18,11 +35,11 @@ class ProfileJsonResponse
     {
         $response = $next($request);
 
-        if (! app()->bound('debugbar')) {
+        if (! $this->app->bound('debugbar')) {
             return $response;
         }
 
-        $debugbar = app('debugbar');
+        $debugbar = $this->app['debugbar'];
 
         if ($request->has('_debugbar') &&
             $debugbar->isEnabled() &&
