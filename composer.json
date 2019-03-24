@@ -17,7 +17,9 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
         "beyondcode/laravel-dump-server": "^1.0",
+        "brainmaestro/composer-git-hooks": "^2.6",
         "filp/whoops": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.14",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
@@ -32,6 +34,13 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+        "hooks": {
+            "pre-commit": [
+                "echo Committing as $(git config user.name)",
+                "echo Formatting code style with php-cs-fixer",
+                "composer format"
+            ]
         }
     },
     "autoload": {
@@ -64,8 +73,17 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
         ],
+        "post-install-cmd": [
+            "vendor/bin/cghooks add --ansi"
+        ],
+        "post-update-cmd": [
+            "vendor/bin/cghooks update --ansi"
+        ],
         "test": [
             "vendor/bin/phpunit --colors=always"
+        ],
+        "format": [
+            "vendor/bin/php-cs-fixer fix --ansi"
         ]
     }
 }
