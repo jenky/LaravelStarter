@@ -12,6 +12,6 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 30)->create();
+        factory(User::class, intval($this->command->ask('How many records do you want to create', 30)))->create();
     }
 }
