@@ -22,11 +22,11 @@ trait PermalinkUrl
      * @param  string|null $key
      * @return \Illuminate\Database\Eloquent\Builder $query
      */
-    public function scopeBySlug($query, $slug, $key = null)
+    public function scopeSlug($query, $slug, $key = null)
     {
-        $key = $key ?: $this->getSlugKey();
-
-        return $query->where($key, '=', $slug);
+        return $query->where(
+            $key ?: $this->getSlugKey(), '=', $slug
+        );
     }
 
     /**
@@ -43,7 +43,7 @@ trait PermalinkUrl
             return $this->find($value);
         }
 
-        return $this->scopeBySlug($query, $value, $key)->first();
+        return $this->scopeSlug($query, $value, $key)->first();
     }
 
     /**
@@ -62,7 +62,7 @@ trait PermalinkUrl
             return $this->findOrFail($value);
         }
 
-        return $this->scopeBySlug($query, $value, $key)->firstOrFail();
+        return $this->scopeSlug($query, $value, $key)->firstOrFail();
     }
 
     /**
@@ -74,22 +74,12 @@ trait PermalinkUrl
      * @param  string $method
      * @return string
      */
-    public function generateUrl($route, $id, $slug = null, $method = 'route')
+    public function generateUrl($route, $method = 'route')
     {
-        return $method($route, [$slug ?: intval($id)]);
-    }
+        $id = method_exists($this, 'getKey')
+            ? $this->getKey()
+            : $this->{$this->getSlugKey()};
 
-    /**
-     * Generate url from eloquent model.
-     *
-     * @param  string $route
-     * @param  string $method
-     * @return string
-     */
-    public function getUrl($route, $method = 'route')
-    {
-        $id = method_exists($this, 'getKey') ? $this->getKey() : 0;
-
-        return $this->generateUrl($route, $id, $this->{$this->getSlugKey()}, $method);
+        return $method($route, [$id]);
     }
 }
