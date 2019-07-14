@@ -76,9 +76,7 @@ trait PermalinkUrl
      */
     public function generateUrl($route, $method = 'route')
     {
-        $id = method_exists($this, 'getKey')
-            ? $this->getKey()
-            : $this->{$this->getSlugKey()};
+        $id = $this->{$this->getSlugKey()} ?? $this->getKey();
 
         return $method($route, [$id]);
     }
