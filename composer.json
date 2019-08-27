@@ -15,15 +15,13 @@
         "laravel/tinker": "^1.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.2",
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.14",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^7.5",
-        "symfony/thanks": "^1.0"
+        "phpunit/phpunit": "^7.5"
     },
     "config": {
         "preferred-install": "dist",
