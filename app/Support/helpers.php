@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 if (! function_exists('array_key_by')) {
@@ -63,7 +64,7 @@ if (! function_exists('random_filename')) {
             $extension = pathinfo($file, PATHINFO_EXTENSION);
         }
 
-        $name = str_random($length);
+        $name = Str::random($length);
 
         if ($closure) {
             $name = $closure($name);
