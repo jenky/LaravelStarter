@@ -80,18 +80,11 @@ if (! function_exists('page_title')) {
      *
      * @param  string $title
      * @param  string $delimiter
-     * @param  string|null $defaultTitle
      * @return string
      */
-    function page_title($title, $delimiter = '|', $defaultTitle = null)
+    function page_title($title, $delimiter = '|')
     {
-        $defaultTitle = $defaultTitle ?: config('app.name');
-
-        if (! $title || $title == $defaultTitle) {
-            return $defaultTitle;
-        }
-
-        return sprintf('%s %s %s', $title, $delimiter, $defaultTitle);
+        return sprintf('%s %s %s', $title, $delimiter, config('app.name'));
     }
 }
 
