@@ -14,7 +14,7 @@ trait MergesFormRequestData
      * @param  dynamic  $methods
      * @return bool
      */
-    public function methodIs(...$methods)
+    public function methodIs(...$methods): bool
     {
         foreach ($methods as $method) {
             return $this->isMethod($method);
@@ -29,7 +29,7 @@ trait MergesFormRequestData
      * @param  dynamic  $patterns
      * @return bool
      */
-    public function actionIs(...$patterns)
+    public function actionIs(...$patterns): bool
     {
         foreach ($patterns as $pattern) {
             if (Str::is($pattern, $this->route()->getActionName())) {

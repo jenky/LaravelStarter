@@ -14,7 +14,7 @@ if (! function_exists('array_key_by')) {
      * @param  string $key
      * @return array
      */
-    function array_key_by(array $data, $key)
+    function array_key_by(array $data, $key): array
     {
         $output = [];
 
@@ -31,10 +31,10 @@ if (! function_exists('datetime')) {
      * Parse datetime with Carbon.
      *
      * @param  mixed $time
-     * @param  \DateTimeZone|string|null $tz
+     * @param  \DateTimeZone|string|array|null $tz
      * @return \Carbon\Carbon
      */
-    function datetime($time = null, $tz = null)
+    function datetime($time = null, $tz = null): Carbon
     {
         if (is_array($time)) {
             [$format, $time] = $time;
@@ -56,7 +56,7 @@ if (! function_exists('random_filename')) {
      * @param  \Closure|null
      * @return string
      */
-    function random_filename($file, $length = 20, Closure $closure = null)
+    function random_filename($file, $length = 20, Closure $closure = null): string
     {
         if ($file instanceof UploadedFile) {
             $extension = $file->getClientOriginalExtension();
@@ -82,7 +82,7 @@ if (! function_exists('page_title')) {
      * @param  string $delimiter
      * @return string
      */
-    function page_title($title, $delimiter = '|')
+    function page_title(string $title, string $delimiter = '|'): string
     {
         return sprintf('%s %s %s', $title, $delimiter, config('app.name'));
     }
@@ -96,7 +96,7 @@ if (! function_exists('active_route')) {
      * @param  string $output
      * @return string|null
      */
-    function active_route($route, $output = 'active')
+    function active_route($route, $output = 'active'): ?string
     {
         if (is_array($route)) {
             if (call_user_func_array('Route::is', $route)) {
