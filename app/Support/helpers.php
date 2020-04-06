@@ -14,7 +14,7 @@ if (! function_exists('array_key_by')) {
      * @param  string $key
      * @return array
      */
-    function array_key_by(array $data, $key): array
+    function array_key_by(array $data, string $key): array
     {
         $output = [];
 
@@ -56,7 +56,7 @@ if (! function_exists('random_filename')) {
      * @param  \Closure|null
      * @return string
      */
-    function random_filename($file, $length = 20, Closure $closure = null): string
+    function random_filename($file, int $length = 20, Closure $closure = null): string
     {
         if ($file instanceof UploadedFile) {
             $extension = $file->getClientOriginalExtension();
@@ -96,7 +96,7 @@ if (! function_exists('active_route')) {
      * @param  string $output
      * @return string|null
      */
-    function active_route($route, $output = 'active'): ?string
+    function active_route($route, string $output = 'active'): ?string
     {
         if (is_array($route)) {
             if (call_user_func_array('Route::is', $route)) {
