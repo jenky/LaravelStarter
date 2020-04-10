@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -93,19 +94,13 @@ if (! function_exists('active_route')) {
      * Return the "active" class if current route is matched.
      *
      * @param  string|array $route
-     * @param  string $output
-     * @return string|null
+     * @param  string $class
+     * @return string
      */
-    function active_route($route, string $output = 'active'): ?string
+    function active_route($route, string $class = 'active'): string
     {
-        if (is_array($route)) {
-            if (call_user_func_array('Route::is', $route)) {
-                return $output;
-            }
-        } else {
-            if (Route::is($route)) {
-                return $output;
-            }
-        }
+        $route = Arr::wrap($route);
+
+        return Route::is(...$route) ? $class : '';
     }
 }
