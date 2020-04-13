@@ -104,7 +104,7 @@ trait ConditionallyMergesData
      *
      * @param  bool  $condition
      * @param  mixed  $value
-     * @return \Illuminate\Http\Resources\MissingValue|mixed
+     * @return \Illuminate\Http\Resources\MergeValue|mixed
      */
     public function mergeWhen($condition, $value)
     {
@@ -116,7 +116,7 @@ trait ConditionallyMergesData
      *
      * @param  mixed  $value
      * @param  mixed  $default
-     * @return \Illuminate\Http\Resources\MissingValue|mixed
+     * @return \Illuminate\Http\Resources\MergeValue|mixed
      */
     public function tap($value, $default = null)
     {
