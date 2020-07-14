@@ -65,7 +65,7 @@ return PhpCsFixer\Config::create()
         'phpdoc_indent' => true,
         'phpdoc_inline_tag' => true,
         'phpdoc_no_alias_tag' => true,
-        'phpdoc_order' => true,
+        // 'phpdoc_order' => true,
         'phpdoc_return_self_reference' => true,
         'phpdoc_scalar' => true,
         'phpdoc_single_line_var_spacing' => true,
